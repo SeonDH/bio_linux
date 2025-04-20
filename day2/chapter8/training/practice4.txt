@@ -1,0 +1,81 @@
+## [실습] 검색 명령 키
+
+1. 문자열 'foo'를 아래 방향으로 검색한다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+(커서가 'foo'의 첫 번째 등장 위치로 이동함)
+
+2. 문자열 'foo'를 위 방향으로 검색한다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+(커서가 'foo'의 마지막 등장 위치로 이동함)
+
+3. 다음 문자열 'foo'를 검색한다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+(커서가 'foo'의 다음 등장 위치로 이동함)
+
+4. 이전 문자열 'foo'를 검색한다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+(커서가 'foo'의 이전 등장 위치로 이동함)
+
+## [실습] 바꾸기 명령 키
+
+1. 현재 행에서 첫 번째로 나오는 'foo'를 'bar'로 바꾼다.
+- AS-IS
+Line 1: This is a foo test.
+- TO-BE
+Line 1: This is a bar test.
+
+2. 파일 전체에서 모든 'foo'를 'bar'로 바꾼다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+Line 1: This is a bar test.
+Line 2: Another bar line.
+Line 3: Yet another bar example.
+
+3. 1행부터 2행까지 범위 내 첫 번째로 나오는 'foo'를 'bar'로 바꾼다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+Line 1: This is a bar test.
+Line 2: Another bar line.
+Line 3: Yet another foo example.
+
+4. 1행부터 2행까지 범위 내 모든 'foo'를 'bar'로 바꾼다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+Line 1: This is a bar test.
+Line 2: Another bar line.
+Line 3: Yet another foo example.
+
+5. 1행부터 3행까지 범위 내 모든 'foo'를 'bar'로 바꿀 때 수정 여부를 묻는다.
+- AS-IS
+Line 1: This is a foo test.
+Line 2: Another foo line.
+Line 3: Yet another foo example.
+- TO-BE
+Line 1: This is a bar test. (사용자가 변경 확인)
+Line 2: Another bar line. (사용자가 변경 확인)
+Line 3: Yet another bar example. (사용자가 변경 확인)

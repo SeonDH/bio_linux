@@ -1,0 +1,150 @@
+### 명령어 연습
+
+1. 커서 위치 글자를 'a'로 수정한다.
+- AS-IS
+123b
+- TO-BE
+123a
+
+2. 커서 위치 단어를 'vi'로 수정한다.
+- AS-IS
+I am learning vim
+- TO-BE
+I am learning vi
+
+3. 두 단어를 'text editor'로 수정한다.
+- AS-IS
+I am learning vim today
+- TO-BE
+I am learning text editor
+
+4. 커서 위치 글자를 'x'로 수정한다.
+- AS-IS
+abc
+- TO-BE
+xbc
+
+5. 두 글자를 'xy'로 수정한다.
+- AS-IS
+abc
+- TO-BE
+xyc
+
+6. 행의 모든 내용을 'This is a new line.'으로 수정한다.
+- AS-IS
+Old line content
+- TO-BE
+This is a new line.
+
+7. 커서 위치부터 행의 끝까지 'changed'로 수정한다.
+- AS-IS
+Partial change starts here
+- TO-BE
+Partial change changed
+
+8. 커서 위치 글자를 삭제한다.
+- AS-IS
+abc
+- TO-BE
+ac
+
+9. 두 글자를 삭제한다.
+- AS-IS
+abc
+- TO-BE
+c
+
+10. 커서 위치 단어를 삭제한다.
+- AS-IS
+This is a test
+- TO-BE
+This is test
+
+11. 두 단어를 삭제한다.
+- AS-IS
+This is a test
+- TO-BE
+This test
+
+12. 행을 삭제한다.
+- AS-IS
+Line 1
+Line 2
+- TO-BE
+Line 2
+
+13. 두 행을 삭제한다.
+- AS-IS
+Line 1
+Line 2
+Line 3
+- TO-BE
+Line 3
+
+14. 커서 위치부터 행의 끝까지 삭제한다.
+- AS-IS
+Delete this part
+- TO-BE
+Delete 
+
+15. 마지막 명령을 취소한다.
+- AS-IS
+You have edited this line.
+- TO-BE
+You have edited this line.
+
+16. 마지막 취소 명령을 되돌린다.
+- AS-IS
+You have edited this line.
+- TO-BE
+You have edited this line.
+
+17. 마지막으로 편집한 한 줄의 모든 변경 사항을 되돌린다.
+- AS-IS
+Original line edited again.
+- TO-BE
+Original line
+
+18. 마지막 저장 시점 이후 내용을 모두 버린다.
+- AS-IS
+Unsaved changes will be discarded.
+- TO-BE
+(파일의 마지막 저장된 상태로 복원)
+
+19. 행을 복사하고 아래쪽에 붙여넣는다.
+- AS-IS
+Copy this line
+(빈 행)
+- TO-BE
+Copy this line
+Copy this line
+
+20. 두 행을 복사하고 윗쪽에 붙여넣는다.
+- AS-IS
+(빈 행)
+Line 1
+Line 2
+- TO-BE
+Line 1
+Line 2
+Line 1
+Line 2
+
+21. 행을 잘라내고 아래쪽에 붙여넣는다.
+- AS-IS
+Cut this line
+(빈 행)
+- TO-BE
+(빈 행)
+Cut this line
+
+22. 두 행을 잘라내고 윗쪽에 붙여넣는다.
+- AS-IS
+Line 1
+Line 2
+(빈 행)
+- TO-BE
+Line 1
+Line 2
+Line 1
+Line 2
