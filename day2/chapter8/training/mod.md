@@ -5,7 +5,7 @@
 ```bash
 $ mkdir -p ~/vi
 $ cd ~/vi
-$ wget -O practice1.txt https://raw.githubusercontent.com/SeonDH/linux_basic/master/vi/practice1.txt
+$ wget -O practice1.txt https://raw.githubusercontent.com/SeonDH/bio_linux/refs/heads/master/day2/chapter8/training/practice1.txt
 ```
 
 1. practice1.txt 를 vi 로 켠다
