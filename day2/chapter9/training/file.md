@@ -1,6 +1,6 @@
 # [실습] 파일 찾기 - 10분
 
-### ▶ 사전 환경 구성 명령
+## 실습 전 명령어
 
 ```bash
 $ touch file1.txt file2.log file3.txt file4.doc file5.txt
@@ -10,7 +10,7 @@ $ dd if=/dev/zero of=large_file.txt bs=1M count=1
 
 ---
 
-### ▶ 실습 문제
+### 실습 문제
 
 1. `.txt` 확장자를 가지고 있는 파일을 찾으세요.
    - 힌트: 와일트 카드

@@ -163,5 +163,4 @@
     grep -E 'pattern1|pattern2' file.txt
     ```
     
-
 [[번외] 정규 표현식](regex.md)
