@@ -12,11 +12,12 @@
 
 #### VirtualBox 설정 예시
 
-![VirtualBox 설정](../images/Untitled%206.png)
+<img src="../images/Untitled%206.png" alt="VirtualBox 설정" width="70%">
+
 
 #### UTM 설정 예시
 
-![UTM 설정](../images/Untitled%207.png)
+<img src="../images/Untitled%207.png" alt="UTM 설정" width="70%">
 
 ---
 
@@ -34,16 +35,12 @@ $ sudo systemctl enable ssh
 
 ### 로컬 리눅스 서버의 IP 확인
 
-```bash
-$ sudo apt-get install net-tools
-$ ifconfig
-```
 
-- `net-tools`를 설치한 후 `ifconfig` 명령어로 IP를 확인한다.
+- ip address 명령어로 ip 확인
 
-![IP 확인](../images/Untitled%208.png)
 
-![ifconfig 출력](../images/Untitled%209.png)
+<img src="../images/ip.png" alt="IP 확인" width="70%">
+
 
 ---
 
@@ -57,7 +54,7 @@ $ ssh {username}@{ip주소}
 
 - 접속 시 `yes` 입력 후 비밀번호를 입력하여 로그인한다.
 
-![SSH 접속 화면](../images/Untitled%2010.png)
+<img src="../images/Untitled%2010.png" alt="SSH 접속 화면" width="70%">
 
 ---
 

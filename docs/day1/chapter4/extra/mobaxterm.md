@@ -8,7 +8,8 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 
 - [https://mobaxterm.mobatek.net/download-home-edition.html](https://mobaxterm.mobatek.net/download-home-edition.html)
 
-![다운로드 페이지](../images/Untitled.png)
+<img src="../images/Untitled.png" alt="다운로드 페이지" width="70%">
+
 
 ---
 
@@ -16,7 +17,9 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 
 - 다운로드한 파일을 압축 해제합니다.
 
-![압축 해제](../images/Untitled%201.png)
+
+<img src="../images/Untitled%201.png" alt="압축 해제" width="70%">
+
 
 ---
 
@@ -24,7 +27,8 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 
 - 프로그램 실행 후 상단 메뉴에서 `Session` 버튼 클릭
 
-![세션 생성](../images/Untitled%202.png)
+<img src="../images/Untitled%202.png" alt="세션 생성" width="70%">
+
 
 ---
 
@@ -32,7 +36,8 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 
 - 접속 방식 중 `SSH` 선택
 
-![SSH 선택](../images/Untitled%203.png)
+<img src="../images/Untitled%203.png" alt="SSH 선택" width="70%">
+
 
 ---
 
@@ -42,7 +47,9 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 - **Specify username**: 사용자 계정 입력  
 - **Port**: 접속 포트 입력
 
-![접속 정보 입력](../images/Untitled%204.png)
+
+<img src="../images/Untitled%204.png" alt="접속 정보 입력" width="70%">
+
 
 ---
 
@@ -50,7 +57,8 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 
 - 최초 접속 시 서버 키를 묻는 창이 나타나며, **Accept**를 클릭하여 접속
 
-![Accept 클릭](../images/Untitled%205.png)
+<img src="../images/Untitled%205.png" alt="Accept 클릭" width="70%">
+
 
 ---
 
