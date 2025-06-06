@@ -148,7 +148,7 @@
 2. **CSV 파일에서 특정 열의 평균 계산 (`awk` 사용)**
     
     ```bash
-    awk -F, '{sum += $3; count++} END {print sum/count}' data.csv
+    awk -F',' '{sum += $3; count++} END {print sum/count}' data.csv
     ```
     
 3. **파일의 특정 패턴 줄 삭제 (`sed` 사용)**

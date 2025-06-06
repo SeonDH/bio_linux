@@ -5,7 +5,7 @@
 시스템 크론은 전체 시스템 단위의 정기 작업을 자동으로 수행하기 위한 크론 설정 방식이다.
 사용자별 `crontab`과는 달리, 시스템 전체에 적용되며 보통 `root` 권한으로 설정한다.
 
----
+
 
 ## 시스템 크론탭 파일
 
@@ -34,7 +34,7 @@ MAILTO=root
 | 사용자      | 명령어를 실행할 사용자        |
 | 명령어      | 실행할 명령어 또는 스크립트 경로  |
 
----
+
 
 ## `/etc/cron.d` 디렉토리
 
@@ -46,7 +46,7 @@ MAILTO=root
 0 5 * * * root /usr/local/bin/daily-maintenance
 ```
 
----
+
 
 ## 주기별 작업 디렉토리
 
@@ -68,7 +68,7 @@ sudo cp myscript.sh /etc/cron.daily/
 
 > 해당 스크립트는 실행 권한이 있어야 하며, 셸에서 직접 실행 가능한 구조여야 한다.
 
----
+
 
 ## 시스템 크론 로그 확인
 
@@ -82,7 +82,7 @@ grep CRON /var/log/syslog
 grep CRON /var/log/cron
 ```
 
----
+
 
 ## 시스템 크론 예시
 
@@ -98,7 +98,7 @@ grep CRON /var/log/cron
 0 2 * * 0 root /usr/local/bin/backup.sh
 ```
 
----
+
 
 ## 요약
 

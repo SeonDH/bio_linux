@@ -8,3 +8,8 @@
 | Chapter 14 |  서버와 파일 전송   | [📄 chapter14](chapter14/14.md) |
 | Chapter 15 |  리눅스 네트워크   | [📄 chapter15](chapter15/15.md) |
 | Chapter 16 |  쉘 스크립트 고급   | [📄 chapter16](chapter16/16.md) |
+
+
+### Day 3: 과제
+
+- github.com 가입하기

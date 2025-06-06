@@ -1,7 +1,7 @@
 
 ## [실습] nohup - 5분
 
-### 사전 준비
+## 실습 전 준비
 
 ```bash
 mkdir -p ~/nohup
@@ -25,9 +25,12 @@ done
 chmod +x create_log_file.sh
 ```
 
-### 실습 항목
+`nohup ./create_log_file.sh > output.log 2>&1 &` 명령어로 **백그라운드 실행**한다.
 
-1. `nohup ./create_log_file.sh > output.log 2>&1 &` 명령어로 **백그라운드 실행**한다.
+## 실습 단계
+
+
 2. `jobs`로 **작업을 확인**한다.
 3. `exit` 명령어로 **세션을 종료**한다.
-4. 다시 로그인한 후, `tail logfile.txt`로 **작업이 계속되었는지 확인**한다.
+4. 다시 로그인한 후, `tail logfile.txt`로 **작업이 계속되었는지 확인**한다. (시간이 충분하지 않다면 작업이 계속 될 수 있음)
+5. 

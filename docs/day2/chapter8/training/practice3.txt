@@ -2,84 +2,84 @@
 
 1. 1행부터 3행까지 지정하여 삭제한다.
 - AS-IS
-Line 1: First line
-Line 2: Second line
-Line 3: Third line
-Line 4: Fourth line
+First line
+Second line
+Third line
+Fourth line
 - TO-BE
-Line 4: Fourth line
+Fourth line
 
 2. 2행부터 4행까지 지정하여 복사한다.
 - AS-IS
-Line 1: First line
-Line 2: Second line
-Line 3: Third line
-Line 4: Fourth line
+First line
+Second line
+Third line
+Fourth line
 - TO-BE
-Line 1: First line
-Line 2: Second line
-Line 3: Third line
-Line 4: Fourth line
-Line 5: Second line
-Line 6: Third line
-Line 7: Fourth line
+First line
+Second line
+Third line
+Fourth line
+Second line
+Third line
+Fourth line
 
 3. 현재 행부터 마지막 행까지 지정하여 변경한다.
 - AS-IS
-Line 1: First line
-Line 2: Second line
-Line 3: Third line
-Line 4: Fourth line
+First line
+Second line
+Third line
+Fourth line
 - TO-BE
-Line 1: First line
-Line 2: New content
-Line 3: New content
-Line 4: New content
+First line
+New content
+New content
+New content
 
 4. 현재 행부터 2행 이후까지 지정하여 들여쓰기 한다.
 - AS-IS
-Line 1: First line
-Line 2: Second line
-Line 3: Third line
-Line 4: Fourth line
+First line
+Second line
+Third line
+Fourth line
 - TO-BE
-Line 1: First line
-    Line 2: Second line
-    Line 3: Third line
-Line 4: Fourth line
+First line
+    Second line
+    Third line
+Fourth line
 
 5. 현재 행부터 2행 이전까지 지정하여 내어쓰기 한다.
 - AS-IS
-    Line 1: First line
-    Line 2: Second line
-    Line 3: Third line
-Line 4: Fourth line
+    First line
+    Second line
+    Third line
+Fourth line
 - TO-BE
-Line 1: First line
-Line 2: Second line
-    Line 3: Third line
-Line 4: Fourth line
+First line
+Second line
+    Third line
+Fourth line
 
 6. 현재 행부터 마지막 행까지 지정하여 대문자로 변환한다.
 - AS-IS
-Line 1: First line
-Line 2: second line
-Line 3: third line
-Line 4: fourth line
+First line
+second line
+third line
+fourth line
 - TO-BE
-Line 1: First line
-Line 2: SECOND LINE
-Line 3: THIRD LINE
-Line 4: FOURTH LINE
+First line
+SECOND LINE
+THIRD LINE
+FOURTH LINE
 
 7. 1행부터 현재 행까지 지정하여 치환한다.
 - AS-IS
-Line 1: foo
-Line 2: foo
-Line 3: foo
-Line 4: bar
+foo
+foo
+foo
+bar
 - TO-BE
-Line 1: bar
-Line 2: bar
-Line 3: bar
-Line 4: bar
+bar
+bar
+bar
+bar

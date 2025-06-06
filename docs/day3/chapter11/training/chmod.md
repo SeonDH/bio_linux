@@ -1,17 +1,16 @@
 # [실습] 파일 권한 변경 - 5분
 
-## 실습 전 명령어
+## 실습 전 준비
 
 ```bash
 mkdir -p ~/file_auth
 cd ~/file_auth
 echo -e '#!/bin/bash\necho "Hello, World!"' > hello.sh
-chmod +x hello.sh
 ```
 
 ---
 
-## 실습 문제
+## 실습 단계
 
 1. `hello.sh` 파일의 권한을 확인한다.
 2. `hello.sh` 파일을 실행한다.

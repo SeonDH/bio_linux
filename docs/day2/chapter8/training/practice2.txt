@@ -140,11 +140,10 @@ Cut this line
 
 22. 두 행을 잘라내고 윗쪽에 붙여넣는다.
 - AS-IS
+(빈 행)
 Line 1
 Line 2
-(빈 행)
 - TO-BE
 Line 1
 Line 2
-Line 1
-Line 2
+(빈 행)

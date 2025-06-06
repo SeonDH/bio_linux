@@ -3,8 +3,6 @@
 SSH 암호 인증 없이 로그인하려면 **SSH 키 기반 인증**을 설정해야 한다.
 이 방식은 공개키 암호화 기술을 기반으로 하며, 클라이언트는 개인 키를 사용하고 서버는 공개 키로 사용자를 인증한다.
 
----
-
 ## 1. SSH 키 생성 (클라이언트 측)
 
 로컬 컴퓨터에서 SSH 키를 생성한다.
@@ -23,7 +21,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 * 기본 위치(`~/.ssh/id_rsa`, `~/.ssh/id_rsa.pub`)를 사용하거나 변경할 수 있다.
 * 패스프레이즈는 생략해도 무방하다.
 
----
+
 
 ## 2. SSH 공개 키 복사
 
@@ -41,7 +39,7 @@ ssh-copy-id username@server_ip_address
 cat ~/.ssh/id_rsa.pub | ssh username@server_ip_address "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
----
+
 
 ## 3. SSH 설정 확인 (서버 측)
 
@@ -65,7 +63,7 @@ ChallengeResponseAuthentication no
 sudo systemctl restart sshd
 ```
 
----
+
 
 ## 4. SSH 접속 테스트
 
@@ -77,6 +75,6 @@ ssh username@server_ip_address
 
 암호 없이 접속된다면 키 기반 인증 설정이 완료된 것이다.
 
----
+
 
 > [번외] [공개키 인증 방식](public_key.md)
