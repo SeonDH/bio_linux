@@ -1,8 +1,7 @@
-# \[번외] cowsay
+# [번외] cowsay
 
 `cowsay`는 입력한 문자열을 말풍선과 함께 ASCII 아트 형태의 동물이 출력하는 유틸리티 프로그램이다. 기본적으로 소(cow) 형태이지만 다양한 동물 형식도 지원한다.
 
----
 
 ## 1. 기본 사용법
 
@@ -11,8 +10,6 @@
 ```bash
 cowsay "패키지 관리 실습 중입니다!"
 ```
-
----
 
 ## 2. 다른 동물 사용하기
 
@@ -23,8 +20,6 @@ cowsay -f tux "Hello from Tux!"
 ```
 
 > `-f` 뒤에는 `/usr/share/cowsay/cows/` 디렉토리에 있는 `.cow` 파일 이름을 지정할 수 있다.
-
----
 
 ## 3. `fortune`과 함께 사용하기
 
@@ -41,8 +36,6 @@ sudo apt install fortune
 ```bash
 fortune | cowsay
 ```
-
----
 
 ## 참고
 

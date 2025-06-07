@@ -32,8 +32,7 @@ TO-BE: 123
 11. 파일을 저장하고 종료한다.
 
 
-----------------------------------
-
+-------------------------------
 This is an example text to practice vi commands. Use the commands mentioned above to navigate and edit this text.
 
 Line 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.

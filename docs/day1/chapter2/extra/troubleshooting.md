@@ -1,9 +1,8 @@
 # [번외] 자주 나오는 오류 (Windows)
 
-실습 도중 아래와 같은 오류가 발생할 수 있습니다.  
-주로 Windows 사용자에게 해당되며, Mac 사용자는 대부분 무관합니다.
+실습 도중 아래와 같은 오류가 발생할 수 있다.  
+주로 Windows 사용자에게 해당되며, Mac 사용자는 대부분 무관하다.
 
----
 
 ## 1. Visual Studio C++ 런타임 누락 오류
 
@@ -15,7 +14,7 @@
 
 ### 원인
 
-Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아서 발생합니다.
+Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아서 발생한다.
 
 ### 해결 방법
 
@@ -24,13 +23,12 @@ Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아�
 
 [Microsoft 공식 다운로드 링크](https://learn.microsoft.com/ko-kr/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
----
 
 ## 2. 가상화 설정 비활성화 오류
 
 ### 증상
 
-가상머신을 실행하려고 할 때 아래와 같은 메시지가 나타납니다:
+가상머신을 실행하려고 할 때 아래와 같은 메시지가 나타난다:
 
 - "VT-x is not available"
 - "AMD-V is disabled in BIOS"
@@ -38,11 +36,10 @@ Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아�
 
 <img src="../images/Untitled%2014.png" width="40%">
 
----
 
 ### 2-1. BIOS에서 가상화 기술 활성화
 
-가상화 기능이 BIOS에서 꺼져 있을 경우 수동으로 켜야 합니다.
+가상화 기능이 BIOS에서 꺼져 있을 경우 수동으로 켜야 한다.
 
 #### 해결 방법
 
@@ -58,11 +55,10 @@ Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아�
 
 ※ Windows 11에서는 "설정 > 시스템 > 복구 > 고급 시작 > UEFI 설정"으로도 BIOS 진입 가능
 
----
 
 ### 2-2. Hyper-V 비활성화
 
-Windows의 Hyper-V 기능이 켜져 있으면 VirtualBox와 충돌할 수 있습니다.
+Windows의 Hyper-V 기능이 켜져 있으면 VirtualBox와 충돌할 수 있다.
 
 #### 해결 방법 (GUI)
 
@@ -76,14 +72,14 @@ Windows의 Hyper-V 기능이 켜져 있으면 VirtualBox와 충돌할 수 있습
 
 #### 해결 방법 (명령어)
 
-아래 명령어를 입력하면 Hyper-V 자동 실행을 비활성화할 수 있습니다:
+아래 명령어를 입력하면 Hyper-V 자동 실행을 비활성화할 수 있다:
 
 ```bash
 bcdedit /set hypervisorlaunchtype off
 ```
 
 Hyper-V를 다시 사용하고 싶은 경우
-VirtualBox 실습이 끝난 뒤 Hyper-V 기반의 WSL2 또는 기타 기능을 다시 사용하고 싶다면, 아래 명령어로 원복할 수 있습니다:
+VirtualBox 실습이 끝난 뒤 Hyper-V 기반의 WSL2 또는 기타 기능을 다시 사용하고 싶다면, 아래 명령어로 원복할 수 있다:
 
 ```bash
 bcdedit /set hypervisorlaunchtype auto

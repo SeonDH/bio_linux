@@ -1,8 +1,5 @@
 ## [번외] MobaXterm을 활용한 SSH 접속
 
-Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도구인 **MobaXterm**의 설치 및 사용 방법을 안내합니다.
-
----
 
 ### 1. MobaXterm 다운로드
 
@@ -11,17 +8,15 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 <img src="../images/Untitled.png" alt="다운로드 페이지" width="70%">
 
 
----
 
 ### 2. 압축 해제
 
-- 다운로드한 파일을 압축 해제합니다.
+- 다운로드한 파일을 압축 해제한다.
 
 
 <img src="../images/Untitled%201.png" alt="압축 해제" width="70%">
 
 
----
 
 ### 3. 세션 생성
 
@@ -30,7 +25,6 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 <img src="../images/Untitled%202.png" alt="세션 생성" width="70%">
 
 
----
 
 ### 4. SSH 세션 선택
 
@@ -39,7 +33,6 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 <img src="../images/Untitled%203.png" alt="SSH 선택" width="70%">
 
 
----
 
 ### 5. 접속 정보 입력
 
@@ -51,7 +44,6 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 <img src="../images/Untitled%204.png" alt="접속 정보 입력" width="70%">
 
 
----
 
 ### 6. 접속 및 키 수락
 
@@ -60,7 +52,6 @@ Windows 환경에서 리눅스 서버에 접속할 때 널리 사용하는 도�
 <img src="../images/Untitled%205.png" alt="Accept 클릭" width="70%">
 
 
----
 
 ### 요약
 

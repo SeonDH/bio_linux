@@ -5,8 +5,11 @@
 * 기업 환경에서의 협업/제품 개발: 유료 라이선스 필요
 * 팀 사용, 배포 목적: Anaconda Team Edition 이상 필요
 
-[→ 라이센스(공식)](https://www.anaconda.com/licensing)
-[→ 블로그](https://www.whatwant.com/entry/miniconda)
+## 아나콘다 라이센스 관련 내용
+
+[라이센스(공식)](https://www.anaconda.com/licensing)
+
+[블로그](https://www.whatwant.com/entry/miniconda)
 
 ## 아나콘다 설치
 
@@ -19,7 +22,6 @@ $ bash Anaconda3-2023.03-Linux-x86_64.sh
 * 설치 중에 **라이선스 동의**를 요구하는 메시지가 나온다.
 * 내용 다 읽고 나서 `yes` 입력하면 설치가 진행된다.
 
----
 
 ### 2. 환경 변수 등록
 
@@ -33,7 +35,6 @@ $ echo 'eval "$(/home/seon/anaconda3/bin/conda shell.bash hook)"' >> ~/.bashrc
 
 > 위 경로는 본인의 설치 위치에 맞게 수정해야 한다.
 
----
 
 ### 3. 설치 확인
 

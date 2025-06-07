@@ -2,7 +2,6 @@
 
 이 장에서는 VirtualBox 또는 UTM과 같은 가상 머신 환경에서 로컬 리눅스 서버에 SSH로 접근하는 방법을 다룬다. 네트워크 설정 방식에 따라 브리지 모드와 NAT 모드로 나뉘며, 각각의 설정 방법과 연결 방법을 소개한다.
 
----
 
 ## 1. 브리지를 이용한 방법
 
@@ -19,7 +18,6 @@
 
 <img src="../images/Untitled%207.png" alt="UTM 설정" width="70%">
 
----
 
 ### 리눅스 SSH 서버 설치 및 실행
 
@@ -31,7 +29,6 @@ $ sudo systemctl enable ssh
 
 - `openssh-server`를 설치하고 SSH 서비스를 시작 및 부팅 시 자동 실행 설정을 한다.
 
----
 
 ### 로컬 리눅스 서버의 IP 확인
 
@@ -42,7 +39,6 @@ $ sudo systemctl enable ssh
 <img src="../images/ip.png" alt="IP 확인" width="70%">
 
 
----
 
 ### 클라이언트에서 SSH 접속
 
@@ -56,7 +52,6 @@ $ ssh {username}@{ip주소}
 
 <img src="../images/Untitled%2010.png" alt="SSH 접속 화면" width="70%">
 
----
 
 ## 2. NAT를 이용한 방법
 
@@ -64,7 +59,6 @@ NAT 모드로 설정한 경우, 포트 포워딩을 통해 접근이 가능하�
 
 - [VirtualBox 네트워크 설정 - NAT 및 포트포워딩 방법](https://velog.io/@xeomina/VirtualBox-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95)
 
----
 
 ## 요약
 

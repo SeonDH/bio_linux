@@ -8,7 +8,6 @@ cd ~/file_auth
 echo -e '#!/bin/bash\necho "Hello, World!"' > hello.sh
 ```
 
----
 
 ## 실습 단계
 

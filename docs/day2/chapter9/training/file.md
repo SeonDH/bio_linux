@@ -8,7 +8,6 @@ $ dd if=/dev/zero of=medium_file.txt bs=1K count=10
 $ dd if=/dev/zero of=large_file.txt bs=1M count=1
 ```
 
----
 
 ## 실습 단계
 

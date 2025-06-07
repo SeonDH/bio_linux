@@ -13,7 +13,6 @@ chmod +x sleep_script.sh
 ./sleep_script.sh &
 ```
 
----
 
 ## 실습 단계
 

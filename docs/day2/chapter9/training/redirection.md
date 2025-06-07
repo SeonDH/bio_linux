@@ -14,7 +14,6 @@ $ cat <<EOL > system.log
 EOL
 ```
 
----
 
 ## 실습 단계
 
