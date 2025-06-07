@@ -4,6 +4,8 @@ remote_theme: just-the-docs/just-the-docs
 
 nav_sort: case_insensitive
 
+search_enabled: false
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
