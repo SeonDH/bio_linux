@@ -33,7 +33,7 @@ Git Flow는 다음과 같은 주요 브랜치로 구성된다:
 ### Git Flow 작업 흐름
 
 
-<img src="../images/Untitled 4.png" width="40%">
+<img src="../images/Untitled 4.png" width="60%">
 
 
 1. **기능 개발 (Feature Branch)**

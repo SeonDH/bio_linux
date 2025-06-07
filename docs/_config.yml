@@ -6,6 +6,9 @@ nav_sort: case_insensitive
 
 search_enabled: false
 
+sass:
+  style: compressed
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

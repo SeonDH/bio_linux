@@ -10,7 +10,7 @@
 
 리눅스 가상머신을 실행했을 때 아래와 같은 오류가 뜨는 경우:
 
-<img src="../images/Untitled%2013.png" width="40%">
+<img src="../images/Untitled%2013.png" width="60%">
 
 ### 원인
 
@@ -34,7 +34,7 @@ Visual Studio C++ 런타임(Visual C++ Redistributable)이 설치되지 않아�
 - "AMD-V is disabled in BIOS"
 - "Hardware virtualization is not enabled"
 
-<img src="../images/Untitled%2014.png" width="40%">
+<img src="../images/Untitled%2014.png" width="60%">
 
 
 ### 2-1. BIOS에서 가상화 기술 활성화

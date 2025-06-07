@@ -23,7 +23,7 @@
 
 ### 1. Ubuntu Server 다운로드
 
-<img src="images/ubuntu.png" alt="Ubuntu 설치 화면" width="40%">
+<img src="images/ubuntu.png" alt="Ubuntu 설치 화면" width="60%">
 
 
 터미널 기반 실습만 진행하므로 **Desktop 버전이 아닌 Server 버전**을 다운로드한다.  
