@@ -1,3 +1,9 @@
+---
+title: "1. 리눅스 소개"
+nav_order: 7
+layout: default
+---
+
 # 1. 리눅스 소개
 
 ## 1. 리눅스란?

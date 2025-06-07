@@ -1,3 +1,9 @@
+---
+title: "19. Git 과 GitHub"
+nav_order: 25
+layout: default
+---
+
 # 19. Git 과 GitHub
 
 ## Git 소개

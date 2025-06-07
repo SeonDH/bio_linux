@@ -1,3 +1,9 @@
+---
+title: "10. 쉘 스크립트"
+nav_order: 16
+layout: default
+---
+
 # 10. 쉘 스크립트
 
 ## 쉘 스크립트란?

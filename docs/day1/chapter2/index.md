@@ -1,3 +1,9 @@
+---
+title: "2. 리눅스 시작하기 (우분투)"
+nav_order: 8
+layout: default
+---
+
 # 2. 리눅스 시작하기 (우분투)
 
 [번외: 가상머신이란?](extra/virtual.md)

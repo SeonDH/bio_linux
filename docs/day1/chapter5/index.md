@@ -1,3 +1,9 @@
+---
+title: "5. 파일의 구성"
+nav_order: 11
+layout: default
+---
+
 # 5. 파일의 구성
 
 ## 파일의 구성 요소

@@ -1,3 +1,9 @@
+---
+title: "9. 파일 내용 다루기"
+nav_order: 15
+layout: default
+---
+
 # 9. 파일 내용 다루기
 
 # 파일 내용 확인

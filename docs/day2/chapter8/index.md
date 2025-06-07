@@ -1,3 +1,10 @@
+---
+title: "8. 텍스트 편집기 활용 (vi)"
+nav_order: 14
+layout: default
+---
+
+
 # 8. 텍스트 편집기 활용 (vi)
 
 ## 8.1 vi 기본 사용법

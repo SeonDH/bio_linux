@@ -15,7 +15,7 @@ has_children: true
 | Chapter 12 | 프로세스 관리       | [chapter12](chapter12/) |
 | Chapter 13 | 크론 작업 (cron)          | [chapter13](chapter13/) |
 | Chapter 14 | 서버와 파일 전송          | [chapter14](chapter14/) |
-| Chapter 15 | 리눅스 네트워크            | [chapter15](chapter15/) |
+| Chapter 15 | 네트워크            | [chapter15](chapter15/) |
 | Chapter 16 | 쉘 스크립트 고급           | [chapter16](chapter16/) |
 
 ## Day 3: 과제

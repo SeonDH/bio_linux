@@ -1,3 +1,9 @@
+---
+title: "24. 병렬처리 (SLURM)"
+nav_order: 30
+layout: default
+---
+
 # 24. 병렬처리 (SLURM)
 
 ## SLURM 소개

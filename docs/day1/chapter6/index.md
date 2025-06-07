@@ -1,4 +1,10 @@
-# 6. 리눅스 쉘
+---
+title: "6. 쉘"
+nav_order: 12
+layout: default
+---
+
+# 6. 쉘
 
 ## 쉘의 개념과 종류
 

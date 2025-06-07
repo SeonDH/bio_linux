@@ -1,3 +1,10 @@
+---
+title: "20. MySQL 실습 기초"
+nav_order: 26
+layout: default
+---
+
+
 # 20. MySQL 실습 기초
 
 ## 데이터베이스란?

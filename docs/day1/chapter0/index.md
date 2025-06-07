@@ -1,3 +1,9 @@
+---
+title: "0. 시작하기에 앞서"
+nav_order: 6
+layout: default
+---
+
 # 0. 시작하기에 앞서
 
 ## 강의 목표

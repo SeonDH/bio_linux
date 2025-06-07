@@ -1,4 +1,10 @@
-# 17. 패키지 관리 및 가상 환경 - Conda (Miniconda 기반)
+---
+title: "18. 패키지 관리 및 가상 환경 - Conda (Miniconda 기반)"
+nav_order: 24
+layout: default
+---
+
+# 18. 패키지 관리 및 가상 환경 - Conda (Miniconda 기반)
 
 ## Conda 소개
 

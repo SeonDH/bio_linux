@@ -1,4 +1,10 @@
-# 21. 터미널 여러개 관리하기
+---
+title: "21. 터미널 여러개 관리하기 (screen, tmux)"
+nav_order: 27
+layout: default
+---
+
+# 21. 터미널 여러개 관리하기 (screen, tmux)
 
 ## screen & tmux
 
