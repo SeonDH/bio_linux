@@ -1,6 +1,6 @@
 # [실습] crontab - 10분
 
-### 실습 전 명령어
+### 실습 전 준비
 
 ```bash
 mkdir -p ~/cron

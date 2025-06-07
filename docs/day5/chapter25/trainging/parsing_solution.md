@@ -1,4 +1,10 @@
-## 실습 문제 답지
+---
+layout: default
+title: "25장 파일 다루기 해설"
+nav_exclude: true
+---
+
+## 파일 다루기 실습 문제 답지
 
 ### 1. 품질 점수가 낮은 read 필터링
 

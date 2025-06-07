@@ -1,6 +1,6 @@
 # [실습] rsync - 5분
 
-## 실습 전 명령어
+## 실습 전 준비
 
 ```bash
 mkdir ~/rsync

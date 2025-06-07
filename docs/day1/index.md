@@ -16,7 +16,7 @@ has_children: true
 | Chapter 2 | 리눅스 시작하기 (우분투)     | [chapter2](chapter2/) |
 | Chapter 3 | 리눅스 기본 디렉터리 구조    | [chapter3](chapter3/) |
 | Chapter 4 | 디렉터리 및 파일 기본 명령어 | [chapter4](chapter4/) |
-| Chapter 5 | 리눅스 파일의 구성           | [chapter5](chapter5/) |
+| Chapter 5 | 파일의 구성           | [chapter5](chapter5/) |
 | Chapter 6 | 리눅스 쉘                    | [chapter6](chapter6/) |
 | Chapter 7 | 텍스트 편집기 (vi)           | [chapter7](chapter7/) |
 
