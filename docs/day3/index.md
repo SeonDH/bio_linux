@@ -20,5 +20,4 @@ has_children: true
 
 ## Day 3: 과제
 
-1. GitHub에 가입. [https://github.com](https://github.com)
-
+[3일차 과제](homework/)

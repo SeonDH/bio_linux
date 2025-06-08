@@ -77,4 +77,4 @@ ssh username@server_ip_address
 
 
 
-> [번외] [공개키 인증 방식](public_key.md)
+> [[번외] 공개키 인증 방식](public_key.md)

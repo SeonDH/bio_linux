@@ -109,7 +109,7 @@ git clone https://hostname/path/to/repository.git
 git clone git://hostname/path/to/repository.git
 ```
 
-> 자세한 내용은 18장에서 다룬다.
+> 자세한 내용은 19장에서 다룬다.
 
 
 ## 파일 압축 및 해제

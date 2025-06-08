@@ -49,7 +49,7 @@ layout: default
 | `cd` | 디렉터리 이동 |
 | `pwd` | 현재 디렉터리 출력 |
 | `type` | 명령어 유형 확인 |
-| `set`, `unset` | 셸 변수 설정/제거 |
+| `unset` | 셸 변수 제거 |
 | `help` | 내장 명령어 도움말 |
 | `history` | 명령어 기록 확인 |
 
@@ -117,6 +117,7 @@ $ echo 'export MY_VAR=123' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
+- export 를 사용하지 않은 경우 셸 세션 내에서만 유효
 
 ## 사용자 정의 함수 (함수 만들기)
 

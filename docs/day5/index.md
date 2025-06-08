@@ -16,3 +16,8 @@ has_children: true
 | Chapter 23 | 외부 서버 파일 시스템 마운트           | [chapter23](chapter23/)  |
 | Chapter 24 | 리눅스 병렬 처리 (SLURM)               | [chapter24](chapter24/)  |
 | Chapter 25 | 파일 다루기 고급                       | [chapter25](chapter25/)  |
+
+
+## Day 5: 과제
+
+[5일차 과제](homework/)

@@ -69,13 +69,17 @@ layout: default
 
 ## 6. 리눅스의 구성 요소
 
+- **응용 프로그램**:일반 사용자가 실행하는 프로그램. 개발 도구, 편집기, 네트워크 유틸 등
+- **셸(Shell)**: 사용자가 명령어를 입력하는 인터페이스 (Bash 등). 사용자의 명령어를 해석하여 커널에 전달. 
+- **커널(Kernel)**: 하드웨어와 소프트웨어를 연결하는 핵심. 메모리, 파일 시스템, 프로세스, 장치 등을 관리. 운영체제의 핵심
 
-- **커널(Kernel)**: 하드웨어와 소프트웨어를 연결하는 핵심
-- **셸(Shell)**: 사용자가 명령어를 입력하는 인터페이스 (Bash 등)
-- **응용 프로그램**: 개발 도구, 편집기, 네트워크 유틸 등
 
-<img src="images/linux.png" alt="리눅스 구조" width="30%">
+<img src="images/linux.png" alt="리눅스 구조" width="40%">
 
+### 관계
+- 사용자는 셸에 명령을 입력하고, 셸은 이를 커널에게 전달
+- 커널은 시스템 자원을 조작
+- 어플리케이션은 이걸  더 쉽게 하도록 도와줌
 
 ## 7. 리눅스 배포판
 
@@ -95,7 +99,7 @@ layout: default
 
 [리눅스 서버 점유율](https://w3techs.com/technologies/details/os-linux)
 
-<img src="images/market.png" alt="서버 점유율" width="20%">
+<img src="images/market.png" alt="서버 점유율" width="50%">
 
 ## 8. 사용 사례
 

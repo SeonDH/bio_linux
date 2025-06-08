@@ -17,3 +17,4 @@ has_children: true
 
 ## Day 2: 과제
 
+[2일차 과제](homework/)

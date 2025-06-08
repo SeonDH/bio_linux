@@ -24,7 +24,7 @@ layout: default
 - **작업(Job)**: SLURM에 제출되는 실행 단위
 - **배치 스크립트**: 실행 명령어 및 자원 요청 정보를 담은 셸 스크립트
 
-## SLURM 설치 (로컬 테스트용)
+## SLURM 설치
 
 ```bash
 sudo apt update
