@@ -8,7 +8,7 @@ layout: default
 
 ## 파일 시스템 계층 구조 설명
 
-<img src="images/Untitled.png" width="50%">
+<img src="images/Untitled.png" width="80%">
 
 - 리눅스 파일 시스템은 루트(`/`)를 기준으로 한 **계층적 트리 구조**이다.
 - 디렉터리는 하위 디렉터리로 나뉘며, 각 디렉터리에 파일이 저장된다.

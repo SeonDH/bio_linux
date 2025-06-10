@@ -33,7 +33,7 @@ $ ./hello.sh
 
 ### 1. 하드 링크 생성 및 실행
 
-- `hello.sh`의 하드 링크인 `hello_h.sh`를 `~/inode/1/h`에 생성해본다
+- `hello.sh`의 하드 링크인 `hello_h.sh`를 `~/inode/1`에 생성해본다
 - 생성한 하드 링크 파일을 실행해본다
 
 

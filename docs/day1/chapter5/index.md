@@ -59,12 +59,12 @@ $ ls -i
 
 #### 하드 링크 구조
 
-<img src="images/hard.png" alt="하드 링크" width="70%">
+<img src="images/hard.png" alt="하드 링크" width="90%">
 
 
 #### 심볼릭 링크 구조
 
-<img src="images/soft.png" alt="심볼릭 링크" width="70%">
+<img src="images/soft.png" alt="심볼릭 링크" width="90%">
 
 
 ### 2. 하드 링크
