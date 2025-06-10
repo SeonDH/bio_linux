@@ -65,7 +65,7 @@ layout: default
 
 ## 디렉터리 구조 예시 (텍스트 트리)
 
-```
+```text
 /
 ├── bin/
 ├── boot/

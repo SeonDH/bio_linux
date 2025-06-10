@@ -84,7 +84,7 @@ ifconfig
 
 예시 출력:
 
-```
+```text
 eth0      Link encap:Ethernet  HWaddr 00:0c:29:6b:57:ad
           inet addr:192.168.1.10  Bcast:192.168.1.255  Mask:255.255.255.0
           inet6 addr: fe80::20c:29ff:fe6b:57ad/64 Scope:Link
@@ -111,7 +111,7 @@ ip addr show
 
 예시 출력:
 
-```
+```text
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP>
     link/ether 00:0c:29:6b:57:ad brd ff:ff:ff:ff:ff:ff
     inet 192.168.1.10/24 brd 192.168.1.255 scope global dynamic eth0
@@ -137,7 +137,7 @@ netstat -tuln
 
 예시 출력:
 
-```
+```text
 Proto Recv-Q Send-Q Local Address   Foreign Address   State
 tcp   0      0      0.0.0.0:22      0.0.0.0:*         LISTEN
 udp   0      0      0.0.0.0:68      0.0.0.0:*
@@ -163,7 +163,7 @@ ping 8.8.8.8
 
 예시 출력:
 
-```
+```text
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=56 time=23.4 ms
 ```
 
@@ -183,7 +183,7 @@ traceroute 8.8.8.8
 
 예시 출력:
 
-```
+```text
 1  192.168.1.1  1.123 ms
 2  10.0.0.1     2.345 ms
 3  8.8.8.8      23.456 ms

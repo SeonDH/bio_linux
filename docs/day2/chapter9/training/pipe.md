@@ -3,7 +3,7 @@
 
 ## 실습 전 준비
 
-```
+```bash
 cat <<EOL > animals.txt
 dog,mammal,4
 cat,mammal,4

@@ -1,4 +1,4 @@
-# \[번외] PowerShell에서 `vi` 사용 시 단축키 충돌 문제
+# [번외] PowerShell에서 `vi` 사용 시 단축키 충돌 문제
 
 Windows 환경에서 PowerShell을 사용해 `vi` 또는 `vim` 에디터를 실행할 경우, **`Ctrl + V`** 단축키가 윈도우 기본 붙여넣기 동작과 충돌하여 vim의 **비주얼 블록 모드(Visual Block Mode)** 가 정상적으로 작동하지 않을 수 있다.
 

@@ -20,7 +20,7 @@
 
 **파일 `data.txt`**:
 
-```
+```text
 info: starting process
 error: failed to start process
 info: process running
@@ -38,7 +38,7 @@ grep "error" < data.txt
 - **설명**: `grep` 명령어는 표준 입력으로 들어오는 `data.txt` 파일의 내용을 읽어서 "error"를 포함하는 줄을 검색한다.
 - **결과**:
     
-    ```
+    ```text
     error: failed to start process
     error: out of memory
     ```
@@ -53,7 +53,7 @@ grep -H "error" data.txt
 - **설명**: `grep` 명령어는 `data.txt` 파일을 직접 읽어서 "error"를 포함하는 줄을 검색하고, 파일 이름과 함께 출력한다.
 - **결과**:
     
-    ```
+    ```text
     data.txt:error: failed to start process
     data.txt:error: out of memory
     ```
@@ -63,14 +63,14 @@ grep -H "error" data.txt
 
 **파일 `file1.txt`**:
 
-```
+```text
 info: process running
 error: file not found
 ```
 
 **파일 `file2.txt`**:
 
-```
+```text
 warning: disk space low
 error: unable to read file
 ```
@@ -84,7 +84,7 @@ cat file1.txt file2.txt | grep "error"
 - **설명**: `cat` 명령어는 `file1.txt`와 `file2.txt`의 내용을 표준 입력으로 합친다. `grep` 명령어는 이 합쳐진 내용에서 "error"를 포함하는 줄을 검색한다.
 - **결과**:
     
-    ```
+    ```text
     error: file not found
     error: unable to read file
     ```
@@ -99,7 +99,7 @@ grep "error" file1.txt file2.txt
 - **설명**: `grep` 명령어는 `file1.txt`와 `file2.txt`를 직접 읽어서 "error"를 포함하는 줄을 검색하고, 각 줄의 앞에 해당 파일 이름을 함께 출력한다.
 - **결과**:
     
-    ```
+    ```text
     file1.txt:error: file not found
     file2.txt:error: unable to read file
     ```

@@ -4,7 +4,7 @@
 
 1. 아래 텍스트를 복사해서 `vi_practice.txt` 파일을 만들고 실습을 진행한다.
 
-    ```
+    ```text
     Line 1: This is a simple text file used to practice vi editor commands.
     Line 2: Each line in this file has a line number at the beginning.
     Line 3: You can use this file to try movement commands like h, j, k, l.
@@ -37,7 +37,7 @@
 
 2. 아래 텍스트를 복사해서 file_content.txt 파일을 만들고 실습을 진행한다.
 
-    ```
+    ```text
     user1:x:1000:1000:User One:/home/user1:/bin/bash
     user2:x:1001:1001:User Two:/home/user2:/bin/bash
     user3:x:1002:1002:User Three:/home/user3:/sbin/nologin
@@ -52,7 +52,7 @@
 
     2. 파일의 각 줄에서 홈 디렉터리 경로(ex: /home/user1)만 추출해서 home_paths.txt에 저장
         - 예시 파일
-        ```
+        ```text
         /home/user1
         /home/user2
         /home/user3
@@ -66,7 +66,7 @@
     3. 사용자 셸 종류(ex: /usr/sbin/nologin)의 종류별로 몇 줄인지 확인
             
         - 예시 파일
-        ```
+        ```text
         4 /bin/bash
         1 /bin/false
         1 /bin/zsh
@@ -94,7 +94,7 @@
     - 작성 후 실행 권한을 부여하고 실행한다.
 
     - 예시 출력
-        ```
+        ```text
         안녕하세요, user31님!
         현재 날짜와 시간은: 2025년 06월 08일 14:35:12 입니다.
         현재 위치: /home/user31/day2/chapter10

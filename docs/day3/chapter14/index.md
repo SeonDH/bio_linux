@@ -77,7 +77,7 @@ tar czf - directory | nc remote_host 포트번호
 
 
 
-### \[실습] nc
+### [실습] nc
 
 - [실습] [nc - 5분](training/nc.md)
 

@@ -6,7 +6,7 @@
 
 먼저 시스템 패키지 목록을 업데이트한다.
 
-```
+```shell
 sudo apt update
 ```
 
@@ -14,7 +14,7 @@ sudo apt update
 
 `apt-get` 명령어를 사용하여 MySQL 서버 패키지를 설치한다.
 
-```
+```shell
 sudo apt install mysql-server
 ```
 
@@ -22,7 +22,7 @@ sudo apt install mysql-server
 
 MySQL 서버를 시작한다.
 
-```
+```shell
 sudo systemctl start mysql
 ```
 
@@ -30,7 +30,7 @@ sudo systemctl start mysql
 
 MySQL 서버가 제대로 실행되고 있는지 확인한다.
 
-```
+```shell
 sudo systemctl status mysql
 ```
 
@@ -38,7 +38,7 @@ sudo systemctl status mysql
 
 MySQL 클라이언트를 사용하여 MySQL 서버에 접속한다.
 
-```
+```shell
 sudo mysql -u root -p
 ```
 

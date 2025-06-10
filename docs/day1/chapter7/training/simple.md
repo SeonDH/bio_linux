@@ -14,7 +14,7 @@ $ cd ~
 
 ### vi 로 아래와 같은 test.txt 파일은 만들어본다. 파일은 아래 내용대로 만든다.
 
-```
+```text
 hello
  this is vi test.
 ```

@@ -35,7 +35,7 @@ awk 'NR % 4 == 1 || NR % 4 == 2' sample.fastq
 * 변이 정보를 담는 포맷 (variant call format)
 * 헤더(`##`, `#CHROM`), 본문 (변이 정보)
 
-#### \[시연 예제] vcf 예시 파일
+#### [시연 예제] vcf 예시 파일
 
 ```text
 ##fileformat=VCFv4.2
