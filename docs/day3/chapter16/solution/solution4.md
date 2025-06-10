@@ -19,6 +19,8 @@ for num in 1 2 3 4 5; do
 done
 echo "Total sum is: $total"
 1부터 5까지의 수를 더해서 합계를 출력함.
+```
+
 
 3. 사용자 이름 출력
 
