@@ -26,8 +26,8 @@ layout: default
 9. **파일 크기 확인**: 특정 파일의 크기를 출력하시오.
 10. **디렉토리 리스트**: 현재 디렉토리의 파일과 디렉토리를 출력하시오.
 
-### 답지 예시 1
-- [답지 예시 1](solution/solution1.md)
+## [답지] 스크립트 1
+- [답지 예시](solution/solution1.md)
 
 
 ## 15분 실습
@@ -41,8 +41,8 @@ layout: default
 7. **문자열 포함 여부**: 문자열과 단어를 입력받아 포함 여부를 확인하시오.
 8. **프로세스 리스트**: 현재 실행 중인 프로세스를 출력하시오.
 
-### 답지 예시 2
-- [답지 예시 2](solution/solution2.md)
+## [답지] 스크립트 2
+- [답지 예시](solution/solution2.md)
 
 ## 15분 실습
 
@@ -56,8 +56,8 @@ layout: default
     - `ip` 명령어 참고
 7. **로그 감시**: 로그 파일을 모니터링하여 특정 단어가 나오면 메시지를 출력하시오.
 
-### 답지 예시 3
-- [답지 예시 3](solution/solution3.md)
+## [답지] 스크립트 2
+- [답지 예시](solution/solution3.md)
 
 ## 10분 실습 — 스크립트 해석 문제
 
@@ -172,5 +172,5 @@ echo "Running processes:"
 ps -ef
 ```
 
-### 답지 예시 4
-- [답지 예시 4](solution/solution4.md)
+## [답지] 스크립트 4
+- [답지 예시](solution/solution4.md)
