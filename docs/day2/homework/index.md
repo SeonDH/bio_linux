@@ -50,11 +50,11 @@
 
     1. file_content.txt의 처음 5줄을 head 명령어로 출력해본다.
 
-    2. 모든 사용자들의 홈 디렉터리 경로만 추출해서 home_paths.txt에 저장
+    2. 파일의 각 줄에서 홈 디렉터리 경로(ex: /home/user1)만 추출해서 home_paths.txt에 저장
         - /home/user1 같은 경로만 남기기
 
-    3. 사용자 셸 종류의 종류별로 몇 명인지 확인
-        - /bin/bash, /bin/zsh 별로 몇명 씩인지 분류
+    3. 사용자 셸 종류(ex: /usr/sbin/nologin)의 종류별로 몇 줄인지 확인
+        - /bin/bash, /bin/zsh 별로 몇줄 인지 분류
 
     4. 파일 전체 줄 수, 단어 수, 문자 수를 출력해본다.
 
