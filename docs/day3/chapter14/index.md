@@ -17,6 +17,21 @@ layout: default
 * `scp`는 SSH 프로토콜을 기반으로 파일을 전송하는 명령어이다.
 * 로컬에서 원격 서버로 또는 반대로 파일을 복사할 수 있다.
 
+### scp 문법
+
+- 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
+    - ex) -o 옵션, -p 옵션
+    - 포트의 경우는 ssh 는 소문자(p) scp 는 대문자(P) - 문법의 차리
+
+- 원격 서버
+    - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
+- 내 개인 PC
+    - {경로 - 상대, 절대 모두 허용}
+
+```
+scp {보내는 곳 경로} {받는 곳 경로}
+```
+
 ### 로컬 → 원격
 
 ```bash
@@ -45,6 +60,21 @@ scp username@remote_host:/path/to/remote/file /path/to/local/
 
 ### 로컬 → 원격
 
+
+- 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
+    - -e 옵션을 통해서 암호화 방식이나 포트 지정 가능
+        - ex) rsync -e 'ssh -p 1119 -o Ciphers=aes256-cbc'
+
+- 원격 서버
+    - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
+- 내 개인 PC
+    - {경로 - 상대, 절대 모두 허용}
+
+```
+rsync -avz {보내는 곳 경로} {받는 곳 경로}
+```
+
+
 ```bash
 rsync -avz /path/to/local/directory/ username@remote_host:/path/to/remote/
 ```
@@ -63,16 +93,18 @@ rsync -avz /path/to/local/directory/ username@remote_host:/path/to/remote/
 
 ### 받는 쪽 (서버)
 
-```bash
-nc -l -p 포트번호 | tar xzf -
-```
-
-### 보내는 쪽 (로컬)
+- 원하는 포트를 지정할 수 있으며 포트는 포트 번호는 0부터 65535까지 사용 가능.
+- 다른 사용자가 특정 포트를 점유하고 있으면 사용 불가능
 
 ```bash
-tar czf - directory | nc remote_host 포트번호
+nc -l -p {포트번호} | tar xzf -
 ```
 
+### 보내는 쪽 (개인 PC)
+
+```bash
+tar czf - {파일 이름} | nc {접근하고 싶은 서버} {포트번호}
+```
 
 
 ### [실습] nc
