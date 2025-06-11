@@ -20,6 +20,6 @@ mkdir -p ~/zip2
 7. `zip` 명령어를 사용하여 `~/zip` 하위 파일들을 압축한다.
 8. 압축 파일을 `~/zip2/zip` 디렉터리에 해제한다.
 
-## 답안 예시
+## 답지
 
-- [답안 예시](../solution/zip_unzip_solution.md)
+- [답지](../solution/zip_unzip_solution.md)

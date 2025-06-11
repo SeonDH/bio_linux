@@ -1,10 +1,10 @@
 ---
-title: "14. 서버와 파일 전송"
+title: "14. 서버와 파일 전송 및 파일 압축"
 nav_order: 20
 layout: default
 ---
 
-# 14. 서버와 파일 전송
+# 14. 서버와 파일 전송 및 파일 압축
 
 
 ## SSH 암호 인증 없이 로그인하기
@@ -63,7 +63,7 @@ scp username@remote_host:/path/to/remote/file /path/to/local/
 
 - 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
     - -e 옵션을 통해서 암호화 방식이나 포트 지정 가능
-        - ex) rsync -e 'ssh -p 1119 -o Ciphers=aes256-cbc'
+        - 예: rsync -e 'ssh -p 1119 -o Ciphers=aes256-cbc'
 
 - 원격 서버
     - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
@@ -88,13 +88,14 @@ rsync -avz /path/to/local/directory/ username@remote_host:/path/to/remote/
 ## 포트를 통한 파일 전송: `nc` (netcat)
 
 * `nc`는 TCP/UDP 포트를 통해 데이터를 전송하는 도구이다.
-* 네트워크 포트가 열려 있어야 하며, 단순하고 빠른 전송이 가능하다.
-* 테스트는 로컬 환경에서 가능하다.
+* **네트워크 포트가 열려 있어야 하며**, 단순하고 빠른 전송이 가능하다.
+* 개인 PC의 가상화 리눅스 서버와 테스트 할 수 있다.
 
 ### 받는 쪽 (서버)
 
 - 원하는 포트를 지정할 수 있으며 포트는 포트 번호는 0부터 65535까지 사용 가능.
 - 다른 사용자가 특정 포트를 점유하고 있으면 사용 불가능
+- 포트번호는 일치해야한다.
 
 ```bash
 nc -l -p {포트번호} | tar xzf -
@@ -144,12 +145,12 @@ git clone git://hostname/path/to/repository.git
 
 ## 파일 압축 및 해제
 
-### 1. `tar` 명령어
+## 1. `tar` 명령어
 
 * 여러 파일을 하나의 아카이브로 묶는다.
 * `tar` 자체는 압축하지 않으며, gzip, bzip2와 함께 사용 가능하다.
 
-#### 주요 옵션
+### 주요 옵션
 
 | 옵션  | 설명                  |
 | --- | ------------------- |
@@ -161,29 +162,31 @@ git clone git://hostname/path/to/repository.git
 | `j` | bzip2 사용            |
 | `C` | 압축을 푸는 디렉터리 지정 |
 
-#### 예시
+### 예시
 
 ```bash
 # 단순 압축
 tar -cvf archive.tar file1 file2 dir/
 
 # 압축 해제
-tar -xvf archive.tar
+tar -xvf archive.tar -C /path/to/unzip
 
-# gzip 압축
+# gzip 압축 (z 옵션이 추가. 확장자를 tar.gz 로 맞춰주는게 좋다)
 tar -czvf archive.tar.gz file1 dir/
 
 # gzip 해제
-tar -xzvf archive.tar.gz
+tar -xzvf archive.tar.gz -C /path/to/unzip
 
-# bzip2 압축
+# bzip2 압축 (j 옵션이 추가. 확장자를 tar.bz2 로 맞춰주는게 좋다)
 tar -cjvf archive.tar.bz2 file1 dir/
 
 # bzip2 해제
-tar -xjvf archive.tar.bz2
+tar -xjvf archive.tar.bz2 -C /path/to/unzip
 ```
 
-### 2. `gzip` 명령어
+## 2. `gzip` 명령어
+
+- 일반 파일을 gzip 만 이용해서 압축
 
 ```bash
 # 압축
@@ -198,6 +201,8 @@ zgrep pattern filename.gz
 ```
 
 ### 3. `bzip2` 명령어
+
+- 일반 파일을 bzip2 만 이용해서 압축
 
 ```bash
 # 압축
@@ -217,14 +222,12 @@ bzgrep pattern filename.bz2
 # zip 압축
 zip archive.zip file1 file2 dir/
 
-# zip 디렉터리 전체 압축
+# zip 디렉터리 전체 압축 (-r 옵셥이 있어야 디렉터리의 파일도 모두 압축해준다)
 zip -r archive.zip dir/
 
 # 압축 해제
 unzip archive.zip
 ```
-
-
 
 ### [실습] 파일 압축
 

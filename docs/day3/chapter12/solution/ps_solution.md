@@ -1,6 +1,6 @@
 # [답지] ps 실습
 
-- 답자의 예시일 뿐이며 여러 답안도 가능하다.
+- 답지의 예시일 뿐이며 여러 답지도 가능하다.
 
 1. 실행 중인 프로세스 목록에서 `sleep_script.sh` 프로세스를 확인한다.
 
@@ -18,5 +18,5 @@
     or 
 
     ```bash
-    $ pkill -f sleep_script.sh
+    $ pkill sleep_script.sh
     ```

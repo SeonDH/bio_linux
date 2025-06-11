@@ -33,20 +33,24 @@ layout: default
 * **Table**: 행(Row)과 열(Column)로 구성
 * **Row**: 데이터 레코드
 * **Column**: 데이터 속성, 특정 타입 가짐
+    - 예: 고객 정보를 저장하는 `customers` 테이블은 ID, 이름, 이메일 컬럼 포함
 
-예: 고객 정보를 저장하는 `customers` 테이블은 ID, 이름, 이메일 컬럼 포함
+
+## [번외] 리눅스에서 MySQL 띄우기
+
+* [[번외] 리눅스에서 MySQL 띄우기](extra/linux.md)
 
 ## [번외] mysql 로컬 설치
 
 - [[번외] mysql 로컬 설치](extra/local.md)
 
+
+## 데이터베이스 생성 및 삭제
+
 ```sql
 CREATE DATABASE database_name; --데이터베이스 생성
 DROP DATABASE database_name;   --데이터베이스 삭제
 ```
-
-
-## 데이터베이스 생성 및 삭제
 
 ## [실습] 데이터베이스 생성
 
@@ -69,7 +73,6 @@ ALTER TABLE table_name ADD column_name datatype;
 
 -- 테이블 삭제
 DROP TABLE table_name; 
-
 ```
 
 
@@ -301,7 +304,3 @@ SELECT a.name AS author_name, b.title AS book_title, b.publication_date
 FROM books b
 INNER JOIN authors a ON b.author_id = a.author_id;
 ```
-
-## [번외] 리눅스에서 MySQL 띄우기
-
-* [[번외] 리눅스에서 MySQL 띄우기](extra/linux.md)

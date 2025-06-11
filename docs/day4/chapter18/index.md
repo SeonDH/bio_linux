@@ -78,6 +78,8 @@ $ conda --version
 
 ### 1. YAML 환경 정의 파일
 
+`environment.yml` 파일을 아래와 같이 작성
+
 ```yaml
 name: myenv
 channels:

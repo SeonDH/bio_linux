@@ -43,6 +43,7 @@ chmod +x file_creater.sh
 ```
 export VISUAL=vi
 ```
+
 ### crontab 을 nano 로 열고 싶을 떄 (vi 설정 시)
 
 ```

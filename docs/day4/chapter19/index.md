@@ -10,6 +10,8 @@ layout: default
 
 * 2005년 리누스 토르발스가 개발한 **분산 버전 관리 시스템**.
 * 코드 변경 이력 관리, 다수의 개발자 협업을 지원.
+  - 파일의 모든 변경 이력을 스냅샷처럼 기록해 실수 시 언제든 과거 상태로 돌아갈 수 있고, 원격 저장소를 통해 팀원과 변경 사항을 손쉽게 공유해 협업을 지원한다.
+
 
 ## 주요 개념 및 기능
 
@@ -76,33 +78,30 @@ layout: default
 
 ## Git 기본 명령어 실습
 
-- git 이 없다면 apt 를 통해 다운로드 받을 수 있다.
-
-
 ```bash
-# 사용자 설정
+# 사용자 설정 (파일은 수정한 사람 정보를 지정한다)
 $ git config --global user.name "Your Name"
 $ git config --global user.email "you@example.com"
 
-# 로컬 저장소 생성
+# 로컬 저장소 생성 (git 으로 관리하고 싶은 디렉터리를 만들고 저장소로 지정한다)
 $ mkdir my_project && cd my_project
 $ git init
 
-# 파일 추가 및 커밋
+# 파일 추가 및 커밋 (디렉터리에 변경 사항을 만들고 기록한다)
 $ echo "Hello, Git!" > hello.txt
 $ git add hello.txt
 $ git commit -m "Add hello.txt"
 
-# 파일 수정 후 상태 및 변경 확인
+# 파일 수정 후 상태 및 변경 확인 (기록한 이후의 변경 사항에 대해서 git 이 인지하는 것을 확인한다)
 $ echo "This is a Git tutorial." >> hello.txt
 $ git status
 $ git diff
 
-# 변경 사항 저장 및 커밋
+# 변경 사항 저장 및 커밋 (다시 git 에 변경 사항을 기록한다)
 $ git add hello.txt
 $ git commit -m "Update hello.txt with tutorial message"
 
-# 브랜치 생성 및 병합
+# 브랜치 생성 및 병합 (변경 사항이 있는 브랜치를 새로 만들고 수정 후 내용을 메인 브랜치에 적용한다)
 $ git branch new-feature
 $ git checkout new-feature
 $ echo "Feature" >> hello.txt
@@ -111,6 +110,9 @@ $ git commit -m "Add feature"
 $ git checkout main
 $ git merge new-feature
 ```
+
+- git add 상태가 있는건 모든 파일을 커밋으로 기록하고 싶지 않으니, add 를 통해서 스테이지로 올린 다음 그것 들만 commit 한다
+- 커밋을 하면 이력으로 남아서 수정 사항이 기록된다.
 
 
 ## GitHub 개요
@@ -139,7 +141,7 @@ $ git merge new-feature
 git clone <https://github.com/username/existing-project.git>
 
 # 클론된 디렉토리로 이동
-cd existing-project
+cd <existing-project>
 
 # 새로운 브랜치 생성 및 체크아웃
 git checkout -b new-feature
@@ -149,19 +151,35 @@ echo "Some changes" >> file.txt
 git add file.txt
 git commit -m "Modify file.txt"
 
-# 원격 저장소에 푸시
+# 원격 저장소에 푸시 (원격 저장소에 권한이 있어야 푸시 가능)
 git push origin new-feature
 ```
 
+## github(원격 저장소에 키 등록하기)
+
+```bash
+# SSH 키 생성 및 등록 (-C 생략 가능)
+$ ssh-keygen -t rsa -b 4096 -C "you@example.com"
+cat ~/.ssh/id_rsa.pub
+```
+
+1. GitHub 웹사이트에 로그인 후 오른쪽 상단 프로필 → Settings 로 이동
+
+2. 왼쪽 메뉴에서 SSH and GPG keys 선택
+
+3. New SSH key 버튼 클릭
+
+4. Title: 키를 구분할 이름(예: “linux server, window pc”)
+
+5. id_rsa.pub 내용 붙여넣기
+
+6. Add SSH key 클릭
 
 ## 로컬 작업물 원격 저장소에 등록하기
 
 ```bash
-# SSH 키 생성 및 등록
-$ ssh-keygen -t rsa -b 4096 -C "you@example.com"
-
 # 원격 저장소 연결
-$ git remote add origin git@github.com:username/repo.git
+$ git remote add origin <git@github.com:username/repo.git>
 
 # 파일 추가 및 커밋
 $ git add .
