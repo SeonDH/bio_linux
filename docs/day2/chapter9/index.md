@@ -97,61 +97,6 @@ nl practice.txt
 wc practice.txt
 ```
 
-# 파일 검색
-
-### 1. `find` 명령어
-
-- 파일 시스템에서 파일이나 디렉터리를 검색하는 데 사용된다.
-
-- 환경 구성
-  ```bash
-  cd ~
-  mkdir find
-  cd find
-  touch file1.txt file2.txt file3.log
-  fallocate -l 2M 2M_FILE
-  ```
-
-- 명령어
-  1. 특정 디렉터리에서 파일 검색:
-      
-      ```bash
-      find . -name "file1.txt"
-      ```
-      
-      - `.`: 검색할 디렉터리 경로
-      - `name "file1.txt"`: 이름이 "filename"인 파일 검색
-  2. 파일 유형별 검색:
-      
-      ```bash
-      find . -type f -name "*.txt"
-      ```
-      
-      - `type f`: 일반 파일 검색
-      - `name "*.txt"`: 확장자가 .txt인 파일 검색
-  3. 특정 시간 이내에 수정된 파일 검색:
-      
-      ```bash
-      find . -mmin -1
-      ```
-      - `mmin -1`: 1분 이내에 수정된 파일 검색
-      - `-mmin +1` 1분 이상 전에 수정된 파일 검색
-  4. 특정 크기 이상의 파일 검색:
-      
-      ```bash
-      find . -size +1M
-      ```
-      - `size -10M` : 크기가 10MB 미만인 파일 검색
-      - `size 10k` : 10KB 인 파일 검색
-      - `size +1M`: 크기가 1MB 초과인 파일 검색
-
-
-[[번외] 와일드 카드와 대괄호 패턴](extra/wildcard.md)
-
-## [실습] 파일 찾기
-
-[[실습] 파일 찾기 - 10분](training/file.md)
-
 # 리눅스 파이프라인과 필터
 
 ## 파이프라인
