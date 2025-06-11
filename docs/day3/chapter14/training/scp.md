@@ -18,11 +18,11 @@ cd ~/scp
 #### 로컬 → 서버
 
 ```bash
-scp -P 1119 ./from_local user31@koreabio.limeops.co.kr:/BiO/Access/home/user31/scp 
+scp -o Ciphers=aes256-cbc -P 1119 ./from_local user31@koreabio.limeops.co.kr:/BiO/Access/home/user31/scp 
 ```
 
 #### 서버 → 로컬
 
 ```bash
-scp -P 1119 -o user31@koreabio.limeops.co.kr:/BiO/Access/home/user31/scp/from_linux . Ciphers=aes256-cbc 
+scp -o Ciphers=aes256-cbc -P 1119 user31@koreabio.limeops.co.kr:/BiO/Access/home/user31/scp/from_linux . 
 ```

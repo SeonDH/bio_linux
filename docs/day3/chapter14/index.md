@@ -50,11 +50,9 @@ rsync -avz /path/to/local/directory/ username@remote_host:/path/to/remote/
 ```
 
 
-
 ### [실습] rsync
 
 - [[실습] rsync - 5분](training/rsync.md)
-
 
 
 ## 포트를 통한 파일 전송: `nc` (netcat)
@@ -129,6 +127,7 @@ git clone git://hostname/path/to/repository.git
 | `f` | 파일 이름 지정 (file)     |
 | `z` | gzip 사용             |
 | `j` | bzip2 사용            |
+| `C` | 압축을 푸는 디렉터리 지정 |
 
 #### 예시
 
