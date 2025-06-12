@@ -1,6 +1,8 @@
+---
 title: "24. 병렬처리 (SLURM)"
 nav_order: 30
 layout: default
+---
 
 # 24. 병렬처리 (SLURM)
 
@@ -54,6 +56,7 @@ sudo mkdir -p /var/spool/slurmd
 sudo mkdir -p /var/spool/slurmctld
 sudo mkdir -p /var/log/slurm
 
+sudo chown slurm: /var/spool
 sudo chown slurm: /var/spool/slurmd
 sudo chown slurm: /var/spool/slurmctld
 sudo chown slurm: /var/log/slurm
@@ -62,14 +65,15 @@ sudo chown slurm: /var/log/slurm
 ## SLURM 설정 예시 (`/etc/slurm/slurm.conf`)
 
 ```conf
-ControlMachine=localhost
-NodeName=localhost CPUs=2 State=UNKNOWN
-PartitionName=short Nodes=localhost Default=YES MaxTime=INFINITE State=UP
-```
+ClusterName=single-cluster
+ControlMachine={호스트이름}
 
-- `ControlMachine`: SLURM 컨트롤 데몬이 실행되는 호스트명
-- `NodeName`: 작업 실행 노드
-- `PartitionName`: 사용할 파티션 이름
+AccountingStorageType=accounting_storage/none
+JobAcctGatherType=jobacct_gather/none
+
+NodeName={호스트이름} CPUs=2 State=UNKNOWN
+PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE State=UP
+```
 
 
 ## SLURM 데몬 실행
@@ -105,7 +109,7 @@ sudo systemctl enable --now slurmd
 #SBATCH --output=output.txt
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
-#SBATCH --partition=short
+#SBATCH --partition=debug
 
 echo "Hello from SLURM"
 hostname
@@ -117,23 +121,6 @@ hostname
 sbatch myjob.sh
 cat output.txt
 ```
-
-
-## 병렬 작업 예시
-
-### CPU 코어 4개 사용 예시
-
-```bash
-#!/bin/bash
-#SBATCH --job-name=multi_cpu
-#SBATCH --ntasks=4
-#SBATCH --time=00:10:00
-#SBATCH --partition=short
-
-srun hostname
-```
-
-- `hostname` 명령이 4개의 태스크에서 병렬 실행되어 4개의 호스트명이 출력됩니다.
 
 
 ## SLURM 자원 요청 옵션 요약

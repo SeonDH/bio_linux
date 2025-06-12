@@ -144,46 +144,6 @@ caption string '%{= kw}Window: %n %t'
 
 ## tmux
 
-## tmux 설정 파일 생성
-
-```bash
-$ vi ~/.tmux.conf
-```
-
-### .tmux.conf 예제
-
-```
-# 기본 접두사 키를 Ctrl-a로 변경
-#set -g prefix C-a
-#unbind C-b
-#bind C-a send-prefix
-
-# 상태 표시줄 설정
-set -g status-bg colour235
-set -g status-fg white
-set -g status-left '[#S]'
-set -g status-right '[%Y-%m-%d %H:%M:%S]'
-
-# 창 간 이동 시 표시줄 유지
-setw -g monitor-activity on
-set -g visual-activity on
-
-# 마우스 지원 활성화
-#set -g mouse on
-
-# 창 동기화 단축키 설정
-#bind s setw synchronize-panes on
-#bind S setw synchronize-panes off
-
-# 기존 수직 분할 바인딩 해제 및 새로운 바인딩 추가
-#unbind %
-#bind | split-window -h
-
-# 기존 수평 분할 바인딩 해제 및 새로운 바인딩 추가
-#unbind '"'
-#bind - split-window -v
-```
-
 ### 기본 명령어
 
 1. **새 세션 시작**
@@ -204,22 +164,22 @@ set -g visual-activity on
     Ctrl + b, d
     ```
     
-4. **분리된 세션에 재연결**
+4. **분리된 세션에 재연결 (세션이 유일한 경우)**
     
     ```bash
-    tmux attach-session -t session_name
+    tmux attach-session # 축약어 a
     ```
     
 5. **현재 세션 목록 보기**
     
     ```bash
-    tmux list-sessions
+    tmux list-sessions # 축약어 ls
     ```
     
 6. **특정 세션에 연결**
     
     ```bash
-    tmux attach-session -t session_name
+    tmux attach-session -t session_name # 축약어 a
     ```
     
 7. **새 창 만들기**
@@ -290,7 +250,46 @@ set -g visual-activity on
     ```bash
     Ctrl + b, :setw synchronize-panes off
     ```
-    
+
+## tmux 설정 파일 생성
+
+```bash
+$ vi ~/.tmux.conf
+```
+
+### .tmux.conf 예제
+
+```
+# 기본 접두사 키를 Ctrl-a로 변경
+#set -g prefix C-a
+#unbind C-b
+#bind C-a send-prefix
+
+# 상태 표시줄 설정
+set -g status-bg colour235
+set -g status-fg white
+set -g status-left '[#S]'
+set -g status-right '[%Y-%m-%d %H:%M:%S]'
+
+# 창 간 이동 시 표시줄 유지
+setw -g monitor-activity on
+set -g visual-activity on
+
+# 마우스 지원 활성화
+#set -g mouse on
+
+# 창 동기화 단축키 설정
+#bind s setw synchronize-panes on
+#bind S setw synchronize-panes off
+
+# 기존 수직 분할 바인딩 해제 및 새로운 바인딩 추가
+#unbind %
+#bind | split-window -h
+
+# 기존 수평 분할 바인딩 해제 및 새로운 바인딩 추가
+#unbind '"'
+#bind - split-window -v
+```
 
 
 ### 요약

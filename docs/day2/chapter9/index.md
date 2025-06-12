@@ -99,11 +99,6 @@ wc practice.txt
 
 # 리눅스 파이프라인과 필터
 
-## 파이프라인
-
-```bash
-ls -l | more
-```
 
 ## 필터
 
@@ -180,6 +175,12 @@ ls -l | more
 ## [실습] 필터 명령어 실습
 
 [[실습] 필터 - 10분](training/filter.md)
+
+## 파이프라인
+
+```bash
+ls -l | more
+```
 
 ## 파이프 라인과 필터의 조합
 
