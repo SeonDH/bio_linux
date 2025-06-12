@@ -1,8 +1,6 @@
----
 title: "25. 파일 다루기 고급"
 nav_order: 31
 layout: default
----
 
 
 # 25. 파일 다루기 고급
@@ -11,63 +9,96 @@ layout: default
 
 ### 1. FASTQ 파일
 
-* DNA 시퀀싱 결과를 표현하는 텍스트 포맷
-* 4줄 단위로 구성: `@ID`, `sequence`, `+`, `quality score`
+**구조**  
+1. `@<ID>`: 시퀀스 식별자  
+2. `<sequence>`: DNA 서열 (A, C, G, T)  
+3. `+`: 구분자 (ID를 반복해도 무방)  
+4. `<quality scores>`: Phred-33 인코딩된 품질 점수 (ASCII 33부터)
 
-#### [시연 예제] fastq 예시 파일
+**Phred Q-score 해석**  
+- ASCII 코드 값 − 33 = 품질 점수(Q)  
+- 예: `!`(33) → Q0, `"`(34) → Q1, …, `I`(73) → Q40  
 
+**샘플**  
 ```text
 @SEQ_ID
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAAT
 +
 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
-```
+````
 
-#### `awk`로 FASTQ 레코드 블록 출력
+**기본 블록 출력**
 
 ```bash
-awk 'NR % 4 == 1 || NR % 4 == 2' sample.fastq
+awk 'NR%4==1||NR%4==2' sample.fastq
 ```
+
 
 
 ### 2. VCF 파일
 
-* 변이 정보를 담는 포맷 (variant call format)
-* 헤더(`##`, `#CHROM`), 본문 (변이 정보)
+**구조**
 
-#### [시연 예제] vcf 예시 파일
+* `##` 헤더: 메타데이터 (`fileformat`, `INFO`, `FORMAT` 등)
+* `#CHROM` 라인: 컬럼명 (`CHROM`, `POS`, `ID`, `REF`, `ALT`, `QUAL`, `FILTER`, `INFO` 등)
+* 본문: 변이 레코드
+
+**주요 INFO 태그**
+
+* `DP`: 전체 depth
+* `AF`: allele frequency
+* `MQ`: mapping quality
+
+**샘플**
 
 ```text
 ##fileformat=VCFv4.2
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
-chr1	123456	.	A	T	29.1	PASS	.
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+#CHROM  POS     ID  REF ALT QUAL FILTER INFO
+chr1    123456  .   A   T   29.1 PASS   DP=14;AF=0.50;MQ=60
 ```
 
-#### `awk` 시연 예제
+**헤더 제외 주요 칼럼 추출**
 
 ```bash
-awk '!/^#/ { print $1, $2, $4, $5 }' sample.vcf
+awk '!/^#/ { print $1, $2, $4, $5, $6, $8 }' sample.vcf
 ```
 
 
 ### 3. GTF 파일
 
-* 유전자 주석 정보 표현
-* 필드: chrom, source, feature, start, end, score, strand, frame, attributes
+**구조 (9개 필드)**
 
-#### [시연 예제] gtf 예시 파일
+1. `seqname` (chromosome)
+2. `source` (annotation 제공자)
+3. `feature` (gene, transcript, exon 등)
+4. `start`
+5. `end`
+6. `score`
+7. `strand` (+/−)
+8. `frame` (0,1,2 또는 `.`)
+9. `attributes` (`key "value";` 쌍)
+
+**샘플**
 
 ```text
-chr1	HAVANA	gene	11869	14409	.	+	.	gene_id "ENSG00000223972";
+chr1    HAVANA  gene    11869   14409   .   +   .   gene_id "ENSG00000223972"; transcript_id "ENST00000456328";
 ```
 
-#### `cut` 시연 예제
+**기본 필드 추출**
 
 ```bash
 cut -f1,3,9 sample.gtf
 ```
 
+**특정 유전자(gene\_id)만 추출**
+
+```bash
+grep 'gene_id "ENSG00000223972"' sample.gtf \
+  | awk '{ print $1, $4, $5, $9 }'
+```
+
+
 ## [실습] 파일 다루기
 
-- [[실습] 파일 다루기](trainging/parsing.md)
-
+* [[실습] 파일 다루기](training/parsing.md)
