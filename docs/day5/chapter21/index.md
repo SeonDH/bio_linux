@@ -117,7 +117,8 @@ layout: default
 ### screen 관련 설정 파일 생성
 
 - ~/.screenrc 파일 생성
-```conf
+
+```text
 # 기본 접두사 키를 Ctrl-b로 변경
 # escape ^Bb
 
