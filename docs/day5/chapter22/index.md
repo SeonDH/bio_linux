@@ -128,39 +128,41 @@ layout: default
 
 
 - `echo_docker.sh` 파일 작성
-    ```bash
-    #!/bin/bash
-    echo "Hello, Docker!"
-    ```
+```bash
+#!/bin/bash
+echo "Hello, Docker!"
+```
 
-    ```bash
-    $ chmod +x echo_docker.sh
-    ```
+```bash
+$ chmod +x echo_docker.sh
+```
+
+```bash
+# 베이스 이미지 선택
+FROM alpine:latest
+
+# bash 설치
+RUN apk add --no-cache bash
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 로컬의 echo_docker.sh 스크립트를 컨테이너의 /app 디렉토리에 복사
+COPY echo_docker.sh .
+
+# 실행 권한 부여
+RUN chmod +x echo_docker.sh
+
+# 컨테이너가 실행될 때 실행할 명령어 지정
+CMD ["bash", "./echo_docker.sh"]
+```
 
 - `Dockerfile` 파일 생성
     - Alpine Linux 기반 컨테이너를 만들고
     - bash를 설치한 뒤
     - /app 디렉터리에 로컬 스크립트를 복사·실행 권한을 주고
     - 컨테이너가 시작되면 그 스크립트를 bash로 실행하도록 설정
-    ```bash
-    # 베이스 이미지 선택
-    FROM alpine:latest
 
-    # bash 설치
-    RUN apk add --no-cache bash
-
-    # 작업 디렉토리 설정
-    WORKDIR /app
-
-    # 로컬의 echo_docker.sh 스크립트를 컨테이너의 /app 디렉토리에 복사
-    COPY echo_docker.sh .
-
-    # 실행 권한 부여
-    RUN chmod +x echo_docker.sh
-
-    # 컨테이너가 실행될 때 실행할 명령어 지정
-    CMD ["bash", "./echo_docker.sh"]
-    ```
 
 - 이미지 빌드
     ```bash

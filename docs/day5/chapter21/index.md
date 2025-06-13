@@ -117,24 +117,24 @@ layout: default
 ### screen 관련 설정 파일 생성
 
 - ~/.screenrc 파일 생성
-    ```conf
-    # 기본 접두사 키를 Ctrl-b로 변경
-    # escape ^Bb
+```conf
+# 기본 접두사 키를 Ctrl-b로 변경
+# escape ^Bb
 
-    # 상태 표시줄 설정
-    hardstatus alwayslastline
-    hardstatus string '%{= kG}[%H] %{= kw}%-Lw%{= kW}%n*%f %t%{= kw}%+Lw %= %Y-%m-%d %c'
+# 상태 표시줄 설정
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%H] %{= kw}%-Lw%{= kW}%n*%f %t%{= kw}%+Lw %= %Y-%m-%d %c'
 
-    # 새 창의 기본 쉘
-    shell -$SHELL
+# 새 창의 기본 쉘
+shell -$SHELL
 
-    # 기본 창 이름 설정
-    screen -t main
+# 기본 창 이름 설정
+screen -t main
 
-    # 창 번호 표시
-    caption always
-    caption string '%{= kw}Window: %n %t'
-    ```
+# 창 번호 표시
+caption always
+caption string '%{= kw}Window: %n %t'
+```
 
 ## tmux
 
@@ -248,37 +248,38 @@ layout: default
 ## tmux 설정 파일 생성
 
 - `~/.tmux.conf` 파일 생성
-    ```conf
-    # 기본 접두사 키를 Ctrl-a로 변경
-    #set -g prefix C-a
-    #unbind C-b
-    #bind C-a send-prefix
 
-    # 상태 표시줄 설정
-    set -g status-bg colour235
-    set -g status-fg white
-    set -g status-left '[#S]'
-    set -g status-right '[%Y-%m-%d %H:%M:%S]'
+```conf
+# 기본 접두사 키를 Ctrl-a로 변경
+#set -g prefix C-a
+#unbind C-b
+#bind C-a send-prefix
 
-    # 창 간 이동 시 표시줄 유지
-    setw -g monitor-activity on
-    set -g visual-activity on
+# 상태 표시줄 설정
+set -g status-bg colour235
+set -g status-fg white
+set -g status-left '[#S]'
+set -g status-right '[%Y-%m-%d %H:%M:%S]'
 
-    # 마우스 지원 활성화
-    #set -g mouse on
+# 창 간 이동 시 표시줄 유지
+setw -g monitor-activity on
+set -g visual-activity on
 
-    # 창 동기화 단축키 설정
-    #bind s setw synchronize-panes on
-    #bind S setw synchronize-panes off
+# 마우스 지원 활성화
+#set -g mouse on
 
-    # 기존 수직 분할 바인딩 해제 및 새로운 바인딩 추가
-    #unbind %
-    #bind | split-window -h
+# 창 동기화 단축키 설정
+#bind s setw synchronize-panes on
+#bind S setw synchronize-panes off
 
-    # 기존 수평 분할 바인딩 해제 및 새로운 바인딩 추가
-    #unbind '"'
-    #bind - split-window -v
-    ```
+# 기존 수직 분할 바인딩 해제 및 새로운 바인딩 추가
+#unbind %
+#bind | split-window -h
+
+# 기존 수평 분할 바인딩 해제 및 새로운 바인딩 추가
+#unbind '"'
+#bind - split-window -v
+```
 
 
 ### 요약
