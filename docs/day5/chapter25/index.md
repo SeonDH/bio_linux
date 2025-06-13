@@ -1,7 +1,8 @@
+---
 title: "25. 파일 다루기 고급"
 nav_order: 31
 layout: default
-
+---
 
 # 25. 파일 다루기 고급
 

@@ -79,16 +79,7 @@
 * 명령어 예시: `awk -F"DP=" '{print $2}' | cut -d";" -f1`
 
 
-## 실습 팁
-
-* `.fastq.gz` 파일은 `zcat`, `zgrep` 등으로 처리 가능
-
-  ```bash
-  zcat data/ex07.fastq.gz | head -n 8
-  ```
-* VCF는 `bcftools`, GTF는 `gffread` 도구로 검증 가능
-* 실습 중 필요한 명령어:
-
-  * `awk '{...}'`, `grep 'pattern'`, `cut -f`, `sort`, `uniq`, `head`, `tail`
-  * `zcat`, `less`, `wc -l`
+## [답지]
+- [답지 예시](../solution/parsing_solution.md)
+  
 
