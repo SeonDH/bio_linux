@@ -3,7 +3,7 @@
 
 1. `cowsay` 패키지를 APT 명령어로 설치한다.
     ```
-    sudo apt-get install cossay
+    sudo apt-get install cowsay
     ```
 2. `cowsay` 명령어를 실행해본다.
     ```
@@ -11,5 +11,5 @@
     ```
 3. `cowsay` 패키지를 제거한다.
     ```
-    sudo apt-get remove cossay
+    sudo apt-get remove cowsay
     ```

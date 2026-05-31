@@ -7,6 +7,13 @@ layout: default
 
 # 15. 네트워크
 
+> 이 장은 원격 서버 접속, 파일 전송, Docker/SLURM 실습을 이해하기 위한 최소한의 네트워크 배경이다.
+> 바이오 데이터 분석 취업 준비 과정에서는 깊은 네트워크 이론보다 `IP`, `포트`, `SSH`, `ping` 정도를 이해하면 충분하다.
+> 나머지 항목은 실무에서 자주 보이는 용어를 알아두는 수준으로 보면 된다.
+
+> Ubuntu 22.04에서는 `ifconfig`, `netstat`, `telnet`, `traceroute`가 기본 설치가 아닐 수 있다.  
+> `ifconfig`와 `netstat`는 `ip`, `ss`로 대체해서 볼 수 있고, `telnet`은 `nc`, `traceroute`는 `tracepath`로 대체해서 볼 수 있다. 필요하면 관련 패키지를 추가 설치한다.
+
 ## 네트워크란?
 
 * 네트워크는 두 대 이상의 컴퓨터나 장치가 데이터를 주고받을 수 있도록 연결된 시스템이다.
@@ -74,9 +81,11 @@ layout: default
 ## 네트워크 정보 확인 명령어
 
 
-### 1. `ifconfig`
+### 1. `ifconfig` (선택)
 
 * 네트워크 인터페이스의 상태 및 IP 정보를 확인한다.
+* Ubuntu에서는 `net-tools` 패키지가 필요할 수 있다.
+* 현대적 대체 명령은 `ip addr show`이다.
 
 ```bash
 ifconfig
@@ -127,9 +136,11 @@ ip addr show
 
 
 
-### 3. `netstat`
+### 3. `netstat` (선택)
 
 * 현재 열려 있는 포트, 네트워크 연결 상태 등을 확인한다.
+* Ubuntu에서는 `net-tools` 패키지가 필요할 수 있다.
+* 현대적 대체 명령은 `ss -tuln`이다.
 
 ```bash
 netstat -tuln
@@ -173,9 +184,11 @@ ping 8.8.8.8
 
 
 
-### 5. `traceroute`
+### 5. `traceroute` (선택)
 
 * 목적지까지 가는 경로(홉)를 추적한다.
+* Ubuntu에서는 `traceroute` 패키지가 필요할 수 있다.
+* 현대적 대체 명령은 `tracepath`이다.
 
 ```bash
 traceroute 8.8.8.8
@@ -194,9 +207,11 @@ traceroute 8.8.8.8
 
 
 
-### 6. `telnet`
+### 6. `telnet` (선택)
 
 * 특정 IP와 포트로 접속이 가능한지 확인하는 데 사용한다.
+* Ubuntu에서는 `telnet` 패키지가 필요할 수 있다.
+* 현대적 대체 명령은 `nc -vz [호스트] [포트]`이다.
 
 ```bash
 telnet [호스트] [포트]

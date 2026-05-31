@@ -11,16 +11,16 @@ layout: default
 - 실제 서버 접근 예시:
 
 ```bash
-ssh user{}@koreabio.limeops.co.kr -p 1119 -o Ciphers=aes256-cbc 
+ssh username@koreabio.limeops.co.kr -p 1119 -o Ciphers=aes256-cbc
 ```
 
 > 명령어 해석: 
-SSH 프로토콜을 사용해서 koreabio.limeops.co.kr 서버에, 사용자 user{}의 계정으로 1119 포트를 통해 접속하되, 암호화 방식은 aes256-cbc만 허용해서 접속할 거야.
+SSH 프로토콜을 사용해서 `koreabio.limeops.co.kr` 서버에 `username` 계정으로 `1119` 포트를 통해 접속한다. 암호화 방식은 `aes256-cbc`만 허용한다.
 
 - 로컬 리눅스 서버 접근:
 
-  - [번외: mobaxterm 사용 (ssh)](extra/mobaxterm.md)
   - [번외: ssh로 로컬 리눅스 서버 접근](extra/ssh.md)
+  - [번외: MobaXterm 사용 (ssh)](extra/mobaxterm.md) - 필요할 때만 참고
 
 - 리눅스 명령어 팁
   - [번외: 리눅스 명령어 팁 모음](extra/tip.md)
@@ -41,11 +41,11 @@ $ pwd
 - .. 은 내 상위 경로를 의미
 
 ```bash
-$ cd /tmp              # 절대 경로로 이동. /tmp 디렉토리로 이동한다.
-$ cd ~                 # 홈 디렉터리로 이동. ~ 디렉토리는 사용자의 홈 디렉토리를 의미한다.
+$ cd /tmp              # 절대 경로로 이동. /tmp 디렉터리로 이동한다.
+$ cd ~                 # 홈 디렉터리로 이동. ~ 디렉터리는 사용자의 홈 디렉터리를 의미한다.
 $ cd ..                # 상위 디렉터리로 이동. (상대경로)
-$ cd localhost         # 현재 디렉터리 하위로 이동. 현재 디렉토리 하위의 localhost 디렉토리로 이동한다. (상대 경로)
-$ cd ../../home        # 두 단계 상위에서 하위로 이동. 현재 디렉토리의 상위 디렉토리의 상위 디렉토리의 하위 home 디렉토리로 이동한다. (상대 경로)
+$ cd localhost         # 현재 디렉터리 하위로 이동. 현재 디렉터리 하위의 localhost 디렉터리로 이동한다. (상대 경로)
+$ cd ../../home        # 두 단계 상위에서 하위로 이동. 현재 디렉터리의 상위 디렉터리의 상위 디렉터리의 하위 home 디렉터리로 이동한다. (상대 경로)
 $ cd                   # 홈 디렉터리로 이동
 ```
 
@@ -57,8 +57,8 @@ $ ls -a                # 숨김 파일 포함
 $ ls -F                # 파일 종류 표시
 $ ls -l                # 상세 정보
 $ ls -alF              # 조합 사용
-$ ll                   # ls -alF의 alias. 사람들이 자주 사용하는 ls -alF 와 같은 경우는 리눅스 시스템에서 자체적으로 alias 라는 개념으로 명령어를 더 쉽게 사용할 수 있도록 설정
-$ alias                # alias 확인. alias 명령어를 통해 어떤 alias 가 걸려있는지 알 수 있다.
+$ ll                   # ls -alF의 alias. 자주 쓰는 조합을 짧게 입력할 수 있도록 설정한 별칭이다.
+$ alias                # alias 확인. 현재 등록된 별칭을 확인한다.
 $ dir, vdir            # ls 유사 명령어. (도스 명령어에 익숙한 사용자들을 위해 제공)
 ```
 
@@ -97,7 +97,7 @@ $ touch /path/to/file            # 절대 경로
 ### `cp`: 파일 복사 - copy
 
 ```bash
-$ cp test test_copy              # 동일 디렉터리 복사. 현재 디렉터리의 test 파일을 복사하여 test_coped 파일을 생성
+$ cp test test_copy              # 동일 디렉터리 복사. 현재 디렉터리의 test 파일을 복사하여 test_copy 파일을 생성
 $ cp /a/test /b/test_copy        # 절대 경로 복사
 ```
 
@@ -111,7 +111,7 @@ $ mv test ../test_new            # 이동하면서 이름 변경
 
 ### `rm`: 파일 및 디렉터리 삭제 - remove
 
-**rm 명령어는 매우 강력한 명령어로 리눅스 시스템 파일도 날릴 수 있어서 조심히 날려야한다. 되돌릴 수 없는 명령어이다. (휴지통이 없다)**
+**rm 명령어는 매우 강력한 명령어이므로, 리눅스 시스템 파일도 삭제할 수 있다. 되돌릴 수 없는 경우가 많으니 주의해서 사용해야 한다. (휴지통이 없다)**
 
 ```bash
 $ rm test                        # 기본 삭제. 현재 디렉터리의 test 를 삭제

@@ -39,7 +39,7 @@ APT는 데비안 및 우분투 계열에서 사용하는 고급 패키지 관리
 
 APT는 리포지토리(저장소)로부터 패키지를 다운로드한다.
 
-* 기본 리포지토리는 `/etc/apt/sources.list` 파일과 `/etc/apt/sources.list.d/` 디렉토리에서 설정한다.
+* 기본 리포지토리는 `/etc/apt/sources.list` 파일과 `/etc/apt/sources.list.d/` 디렉터리에서 설정한다.
 * **PPA (Personal Package Archive)** 를 통해 서드파티 리포지토리를 추가할 수 있다.
 
 [[번외] APT 리포지토리 추가](extra/repository.md)

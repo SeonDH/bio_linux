@@ -38,7 +38,7 @@ sudo apt update
 
 ### 방법 2: `.list` 파일 생성 (권장)
 
-* `/etc/apt/sources.list.d/` 디렉토리에 `.list` 파일을 만들어 저장소를 추가한다:
+* `/etc/apt/sources.list.d/` 디렉터리에 `.list` 파일을 만들어 저장소를 추가한다:
 
 ```bash
 echo "deb [arch=amd64] http://repository_url/ubuntu focal main" \

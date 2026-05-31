@@ -16,7 +16,7 @@
 2. 다음 명령어를 실행
     
     ```
-    /bin/bash -c "$(curl -fsSL <https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh>)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
     
 3. 설치가 완료되면 `brew` 명령어를 사용하여 Homebrew를 사용할 수 있다.

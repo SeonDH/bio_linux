@@ -13,7 +13,7 @@ $ echo -e '#!/bin/bash\necho "Hello, World!"' > hello.sh
 $ chmod +x hello.sh
 ```
 
-- 위 명령어는 `~/inode` 디렉토리 구조를 생성하고, 실행 가능한 `hello.sh` 스크립트를 만든다.
+- 위 명령어는 `~/inode` 디렉터리 구조를 생성하고, 실행 가능한 `hello.sh` 스크립트를 만든다.
 
 ### [참고] 리눅스 파일 실행 방법
 

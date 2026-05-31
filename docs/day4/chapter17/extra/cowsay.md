@@ -19,7 +19,7 @@ cowsay "패키지 관리 실습 중입니다!"
 cowsay -f tux "Hello from Tux!"
 ```
 
-> `-f` 뒤에는 `/usr/share/cowsay/cows/` 디렉토리에 있는 `.cow` 파일 이름을 지정할 수 있다.
+> `-f` 뒤에는 `/usr/share/cowsay/cows/` 디렉터리에 있는 `.cow` 파일 이름을 지정할 수 있다.
 
 ## 3. `fortune`과 함께 사용하기
 

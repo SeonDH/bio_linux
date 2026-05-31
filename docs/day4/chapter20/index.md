@@ -264,7 +264,7 @@ SELECT NOW();
 
 ## 조인
 
-### NNER JOIN: 두 테이블 간의 조인
+### INNER JOIN: 두 테이블 간의 조인
 
 - **INNER JOIN**: 두 테이블에서 일치하는 행을 반환.
     

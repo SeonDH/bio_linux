@@ -61,7 +61,7 @@ layout: default
 * **객체 데이터베이스** 기반
 
   * 블롭(blob): 파일 내용
-  * 트리(tree): 디렉토리 구조
+  * 트리(tree): 디렉터리 구조
   * 커밋(commit): 특정 시점의 트리 가리킴
   * 태그(tag): 커밋에 이름 부여
 
@@ -138,10 +138,10 @@ $ git merge new-feature
 
 ```
 # 원격 저장소 클론
-git clone <https://github.com/username/existing-project.git>
+git clone https://github.com/username/existing-project.git
 
-# 클론된 디렉토리로 이동
-cd <existing-project>
+# 클론된 디렉터리로 이동
+cd existing-project
 
 # 새로운 브랜치 생성 및 체크아웃
 git checkout -b new-feature

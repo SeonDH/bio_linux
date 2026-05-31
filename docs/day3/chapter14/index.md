@@ -21,7 +21,7 @@ layout: default
 
 - 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
     - ex) -o 옵션, -p 옵션
-    - 포트의 경우는 ssh 는 소문자(p) scp 는 대문자(P) - 문법의 차리
+    - 포트의 경우는 ssh 는 소문자(p) scp 는 대문자(P) - 문법의 차이
 
 - 원격 서버
     - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
@@ -222,7 +222,7 @@ bzgrep pattern filename.bz2
 # zip 압축
 zip archive.zip file1 file2 dir/
 
-# zip 디렉터리 전체 압축 (-r 옵셥이 있어야 디렉터리의 파일도 모두 압축해준다)
+# zip 디렉터리 전체 압축 (-r 옵션이 있어야 디렉터리의 파일도 모두 압축해준다)
 zip -r archive.zip dir/
 
 # 압축 해제

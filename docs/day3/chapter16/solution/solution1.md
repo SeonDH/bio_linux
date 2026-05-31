@@ -52,6 +52,6 @@ else
   echo "File does not exist"
 fi
 
-# 10. 디렉토리 리스트
+# 10. 디렉터리 리스트
 ls -l
 ```
