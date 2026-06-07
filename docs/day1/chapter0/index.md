@@ -50,9 +50,16 @@ GUI가 없어 자원을 더 효율적으로 사용할 수 있다.
 - VirtualBox (Windows 추천): [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 - 기타: VMware, LSM 등
 
-### 3. window 의 경우 터미널 프로그램 다운로드 (mac 의 경우 기본 터미널 사용)
+### 3. Windows의 경우 MobaXterm 설치 후 터미널 사용 (macOS의 경우 기본 터미널 사용)
 
-MobaXterm 다운로드
+- Windows: [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html)을 설치한 뒤, SSH 접속과 터미널 실습에 사용한다.
+- macOS: 기본 Terminal 앱을 사용한다.
 
-- [https://mobaxterm.mobatek.net/download-home-edition.html](https://mobaxterm.mobatek.net/download-home-edition.html)
+원격 Linux 서버에 접속하는 실습은 MobaXterm 기준으로 진행한다.
 
+### 4. 설치 페이지 광고 주의
+
+검색 결과의 광고 링크를 통해 설치 페이지에 들어가는 경우가 있다.  
+이때는 주소창의 도메인이 공식 사이트와 정확히 일치하는지 확인하고, 의심스러우면 공식 주소를 직접 입력해서 접속한다.
+
+- [번외: 설치 페이지 광고와 피싱 주의](extra/install_warning.md)

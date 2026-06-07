@@ -26,4 +26,4 @@
     ```
 
     - macOS: Docker Desktop을 설치한 뒤 터미널에서 확인한다.
-    - Windows: Docker Desktop for Windows와 VS Code를 설치한 뒤, VS Code의 통합 터미널에서 확인한다.
+    - Windows: Docker Desktop for Windows와 MobaXterm을 설치한 뒤, MobaXterm의 터미널에서 확인한다.
