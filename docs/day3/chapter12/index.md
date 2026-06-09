@@ -100,7 +100,7 @@ pgrep -f sleep_script.sh
 
 ## [실습] PS 실습
 
-[[실습] ps 실습 - 10분](training/ps.md)
+[[실습] ps 실습 - 5분](training/ps.md)
 
 
 ## kill 스크립트에서 활용

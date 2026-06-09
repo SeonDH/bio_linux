@@ -1,4 +1,4 @@
-# [실습] ps 실습 - 10분
+# [실습] ps 실습 - 5분
 
 ## 실습 전 준비
 
@@ -18,7 +18,3 @@ chmod +x sleep_script.sh
 
 1. 실행 중인 프로세스 목록에서 `sleep_script.sh` 프로세스를 확인한다.
 2. 해당 프로세스를 종료한다.
-
-
-## [답지] ps 실습 - 10분
-- [답지 예시](../solution/ps_solution.md)
