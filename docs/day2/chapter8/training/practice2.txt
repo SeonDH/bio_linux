@@ -1,30 +1,32 @@
 ### 명령어 연습
 
-1. 커서 위치 글자를 'a'로 수정한다.
+각 항목은 `AS-IS` 문장에서 안내한 위치로 커서를 먼저 이동한 뒤 실행한다.
+
+1. 커서를 `b` 위에 둔 뒤, 커서 위치의 글자를 'a'로 수정한다.
 - AS-IS
 123b
 - TO-BE
 123a
 
-2. 커서 위치 단어를 'vi'로 수정한다.
+2. 커서를 `vim`의 `v` 위에 둔 뒤, 커서 위치의 단어를 'vi'로 수정한다.
 - AS-IS
 I am learning vim
 - TO-BE
 I am learning vi
 
-3. 두 단어를 'text editor'로 수정한다.
+3. 커서를 `vim`의 `v` 위에 둔 뒤, 두 단어를 'text editor'로 수정한다.
 - AS-IS
 I am learning vim today
 - TO-BE
 I am learning text editor
 
-4. 커서 위치 글자를 'x'로 수정한다.
+4. 커서를 `a` 위에 둔 뒤, 커서 위치의 글자를 'x'로 수정한다.
 - AS-IS
 abc
 - TO-BE
 xbc
 
-5. 두 글자를 'xy'로 수정한다.
+5. 커서를 `a` 위에 둔 뒤, 두 글자를 'xy'로 수정한다.
 - AS-IS
 abc
 - TO-BE
@@ -36,31 +38,31 @@ Old line content
 - TO-BE
 This is a new line.
 
-7. 커서 위치부터 행의 끝까지 'changed'로 수정한다.
+7. 커서를 `starts`의 `s` 위에 둔 뒤, 커서 위치부터 행의 끝까지 'changed'로 수정한다.
 - AS-IS
 Partial change starts here
 - TO-BE
 Partial change changed
 
-8. 커서 위치 글자를 삭제한다.
+8. 커서를 `b` 위에 둔 뒤, 커서 위치의 글자를 삭제한다.
 - AS-IS
 abc
 - TO-BE
 ac
 
-9. 두 글자를 삭제한다.
+9. 커서를 `a` 위에 둔 뒤, 두 글자를 삭제한다.
 - AS-IS
 abc
 - TO-BE
 c
 
-10. 커서 위치 단어를 삭제한다.
+10. 커서를 `a` 위에 둔 뒤, 커서 위치의 단어를 삭제한다.
 - AS-IS
 This is a test
 - TO-BE
 This is test
 
-11. 두 단어를 삭제한다.
+11. 커서를 두 번째 단어 `is`의 `i` 위에 둔 뒤, 두 단어를 삭제한다.
 - AS-IS
 This is a test
 - TO-BE
@@ -81,7 +83,7 @@ Line 3
 - TO-BE
 Line 3
 
-14. 커서 위치부터 행의 끝까지 삭제한다.
+14. 커서를 `this`의 `t` 위에 둔 뒤, 커서 위치부터 행의 끝까지 삭제한다.
 - AS-IS
 Delete this part
 - TO-BE

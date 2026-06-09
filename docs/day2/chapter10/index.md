@@ -341,15 +341,18 @@ kill %1         # 첫 번째 작업 종료
 
 - `Ctrl + Z`: 현재 작업을 일시 정지 상태로 보냄
 - `Ctrl + C`: 현재 작업을 강제 종료
+- `bg`는 현재 셸의 작업 제어 기능이다. 터미널 세션과 연결되어 있으므로, 장시간 분석 작업을 세션 종료 후에도 유지하려면 `nohup`이나 `tmux` 같은 방법을 사용한다.
 
 [[실습] 포그라운드 백그라운드 - 5분](training/fgbg.md)
 
 ## nohup 사용
 
 - 사용자가 로그아웃해도 백그라운드 작업을 유지
+- 장시간 실행되는 스크립트는 PID를 파일로 남겨두면 나중에 `ps`로 확인하고 `kill`로 종료할 수 있다.
 
 ```bash
-nohup ./script.sh > output.log 2>&1 &
+nohup ./script.sh > output.log 2>&1 & echo $! > script.pid
+kill $(cat script.pid)
 ```
 
 [[실습] nohup - 5분](training/nohup.md)

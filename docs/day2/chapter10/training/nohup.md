@@ -1,5 +1,5 @@
 
-## [실습] nohup - 5분
+# [실습] nohup - 5분
 
 ## 실습 전 준비
 
@@ -25,12 +25,73 @@ done
 chmod +x create_log_file.sh
 ```
 
-`nohup ./create_log_file.sh > output.log 2>&1 &` 명령어로 **백그라운드 실행**한다.
-
 ## 실습 단계
 
+### 1. `bg` 방식으로 실행해보기
 
-2. `jobs`로 **작업을 확인**한다.
-3. `exit` 명령어로 **세션을 종료**한다.
-4. 다시 로그인한 후, `tail logfile.txt`로 **작업이 계속되었는지 확인**한다. (시간이 충분하지 않다면 작업이 계속 될 수 있음)
-5. 
+먼저 일반 백그라운드 작업 제어를 확인한다.
+
+```bash
+./create_log_file.sh
+```
+
+실행 중 `Ctrl + Z`를 눌러 작업을 일시 중지한다.
+
+```bash
+jobs
+bg %1
+jobs
+kill %1
+```
+
+`bg`로 실행한 작업은 `jobs`에서 확인할 수 있는 현재 셸의 작업이다.
+
+### 2. `nohup`으로 실행하고 PID 남기기
+
+```bash
+nohup ./create_log_file.sh > output.log 2>&1 & echo $! > create_log_file.pid
+```
+
+PID가 파일에 저장되었는지 확인한다.
+
+```bash
+cat create_log_file.pid
+ps -p $(cat create_log_file.pid) -o pid,ppid,stat,cmd
+```
+
+로그가 계속 쌓이는지 확인한다.
+
+```bash
+tail -f logfile.txt
+```
+
+확인을 마치면 `Ctrl + C`로 `tail`만 종료한다. `create_log_file.sh`는 계속 실행 중이다.
+
+### 3. `nohup`과 `bg` 차이 확인
+
+```bash
+jobs
+```
+
+터미널을 새로 열거나 다시 로그인한 뒤 같은 디렉터리로 이동해서 확인한다.
+
+```bash
+cd ~/nohup
+jobs
+ps -p $(cat create_log_file.pid) -o pid,ppid,stat,cmd
+tail logfile.txt
+```
+
+- `jobs`는 현재 셸에서 시작한 작업만 보여준다.
+- `nohup`으로 실행한 작업은 새 터미널의 `jobs`에는 보이지 않을 수 있다.
+- PID 파일을 남겨두면 `ps`와 `kill`로 프로세스를 직접 관리할 수 있다.
+
+### 4. `nohup` 프로세스 종료
+
+```bash
+kill $(cat create_log_file.pid)
+ps -p $(cat create_log_file.pid)
+rm -f create_log_file.pid
+```
+
+`ps` 결과에 프로세스가 나오지 않으면 종료된 것이다.
