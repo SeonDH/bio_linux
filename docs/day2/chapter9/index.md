@@ -137,14 +137,14 @@ wc practice.txt
     $ sed 's/fruit/FRUIT/g' example.txt
     ```
     
-    - 이 명령어는 `filename` 파일에서 `old`를 `new`로 바꾸는 작업을 수행한다.
+    - 이 명령어는 `example.txt` 파일에서 `old`를 `new`로 바꾸는 작업을 수행한다.
 3. `awk`: 데이터를 필드 단위로 처리하여 패턴 매칭 및 텍스트 변환을 수행한다.
     
     ```bash
     $ awk -F, '$2 == "fruit" { print $1 $3 }' example.txt
     ```
     
-    - 이 명령어는 `filename` 파일에서 첫 번째와 세 번째 필드를 출력한다.
+    - 이 명령어는 `example.txt` 파일에서 첫 번째와 세 번째 필드를 출력한다.
 4. `sort`: 텍스트를 정렬한다.
     
     ```bash
@@ -163,14 +163,15 @@ wc practice.txt
     $ cut -d, -f1 example.txt
     ```
     
-    - 이 명령어는 `filename` 파일에서 콤마로 구분된 첫 번째 필드를 추출한다.
+    - 이 명령어는 `example.txt` 파일에서 콤마로 구분된 첫 번째 필드를 추출한다.
 7. `tr`: 문자를 변환하거나 삭제한다.
     
     ```bash
     $ tr '[:lower:]' '[:upper:]' < example.txt
     ```
     
-    - 이 명령어는 `filename` 파일의 모든 소문자를 대문자로 변환한다.
+    - 이 명령어는 `example.txt` 파일의 모든 소문자를 대문자로 변환한다.
+    - `tr`은 `sort example.txt`처럼 파일 이름을 직접 인자로 받지 않는다. 파일 내용을 `tr`의 입력으로 넣어야 하므로 `< example.txt`를 사용하거나 `cat example.txt | tr ...` 형태로 사용한다.
 
 ## [실습] 필터 명령어 실습
 

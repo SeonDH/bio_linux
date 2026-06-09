@@ -52,6 +52,9 @@ kill %1
 nohup ./create_log_file.sh > output.log 2>&1 & echo $! > create_log_file.pid
 ```
 
+- `$!`는 바로 직전에 백그라운드로 실행한 프로세스의 PID이다.
+- PID를 파일에 저장해두면 나중에 `ps`로 확인하고 `kill`로 종료할 수 있다.
+
 PID가 파일에 저장되었는지 확인한다.
 
 ```bash
@@ -90,6 +93,7 @@ tail logfile.txt
 
 ```bash
 kill $(cat create_log_file.pid)
+sleep 1
 ps -p $(cat create_log_file.pid)
 rm -f create_log_file.pid
 ```

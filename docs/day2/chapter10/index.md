@@ -1,12 +1,12 @@
 ---
-title: "10. 쉘 스크립트"
+title: "10. 셸 스크립트"
 nav_order: 16
 layout: default
 ---
 
-# 10. 쉘 스크립트
+# 10. 셸 스크립트
 
-## 쉘 스크립트란?
+## 셸 스크립트란?
 
 - **셸 스크립트**는 리눅스 셸에서 실행할 수 있는 명령어들의 모음이다.
 - 반복적인 작업을 자동화하거나, 여러 명령어를 순서대로 실행할 때 사용한다.
@@ -16,7 +16,7 @@ layout: default
 
 1. **시작 라인 (Shebang)**: `#!/bin/bash`
 2. **주석**: `#`로 시작하는 줄은 주석 처리된다.
-3. **명령어**: 일반적인 쉘 명령어들을 순서대로 작성
+3. **명령어**: 일반적인 셸 명령어들을 순서대로 작성
 
 ```bash
 #!/bin/bash
@@ -121,7 +121,7 @@ done
 counter=1
 
 # counter가 5 이하인 동안 반복
-while [ $counter -le 5 ]
+while [ "$counter" -le 5 ]
 do
   echo "반복문 $counter"
   counter=$(( counter + 1 ))
@@ -162,7 +162,7 @@ multiply() {
 }
 
 divide() {
-  if [ $2 -ne 0 ]; then
+  if [ "$2" -ne 0 ]; then
     echo "$1 / $2 = $(( $1 / $2 ))"
   else
     echo "Error: Division by zero is not allowed."
@@ -174,10 +174,10 @@ num1=10
 num2=5
 
 # 사칙 연산 수행
-add $num1 $num2
-subtract $num1 $num2
-multiply $num1 $num2
-divide $num1 $num2
+add "$num1" "$num2"
+subtract "$num1" "$num2"
+multiply "$num1" "$num2"
+divide "$num1" "$num2"
 ```
 
 ## 사용자 입력 받기 (read)
@@ -224,6 +224,17 @@ fi
 
 ## 파일 읽기
 
+가장 간단하게 파일 내용을 확인할 때는 `cat`을 사용할 수 있다.
+
+```bash
+#!/bin/bash
+
+file="myfile.txt"
+cat "$file"
+```
+
+파일을 한 줄씩 읽어서 각 줄마다 작업을 해야 할 때는 `while read` 구조를 사용할 수 있다.
+
 ```bash
 #!/bin/bash
 
@@ -234,7 +245,9 @@ done < "$file"
 ```
 
 
-## 쉘 스크립트 응용 (입력 받은 숫자 통계 내기)
+## 셸 스크립트 응용 (입력 받은 숫자 통계 내기)
+
+아래 예제는 함수, 배열, 반복문, 조건문을 함께 사용하는 종합 예제이다. 처음 배울 때는 모든 문법을 외우기보다 “입력을 반복해서 받고, 계산하고, 결과를 출력한다”는 흐름을 중심으로 보면 된다.
 
 ```bash
 #!/bin/bash
@@ -252,7 +265,7 @@ calculate_max() {
       max=$num
     fi
   done
-  echo $max
+  echo "$max"
 }
 
 calculate_min() {
@@ -262,13 +275,13 @@ calculate_min() {
       min=$num
     fi
   done
-  echo $min
+  echo "$min"
 }
 
 calculate_avg() {
   count=${#numbers[@]}
-  avg=$(echo "$total / $count" | bc -l)
-  echo $avg
+  avg=$(( total / count ))
+  echo "$avg"
 }
 
 # 숫자 입력 받기
@@ -278,7 +291,7 @@ while true; do
   if [ "$input" = "done" ]; then
     break
   elif [[ "$input" =~ ^[0-9]+$ ]]; then
-    numbers+=($input)
+    numbers+=("$input")
     total=$((total + input))
   else
     echo "유효한 숫자를 입력하세요."
@@ -302,6 +315,8 @@ echo "최소값: $min"
 echo "평균: $avg"
 ```
 
+> 평균은 정수 나눗셈으로 계산하므로 소수점 이하는 버려진다.
+
 
 
 ## [실습] 계산기 만들기 - 20분
@@ -309,7 +324,7 @@ echo "평균: $avg"
 [[실습] 계산기 만들기](training/calculator.md)
 
 
-# 포그라운드와 백그라운드 작업
+## 포그라운드와 백그라운드 작업
 
 리눅스에서는 명령어를 **포그라운드(기본)** 또는 **백그라운드**에서 실행할 수 있다.
 
@@ -355,6 +370,13 @@ nohup ./script.sh > output.log 2>&1 & echo $! > script.pid
 kill $(cat script.pid)
 ```
 
+- `nohup`: 터미널 연결이 끊겨도 프로세스가 계속 실행되도록 실행
+- `>`: 표준 출력을 파일로 저장
+- `2>&1`: 표준 오류도 표준 출력과 같은 파일로 저장
+- `&`: 명령을 백그라운드로 실행
+- `$!`: 바로 직전에 백그라운드로 실행한 프로세스의 PID
+- `script.pid`: 나중에 프로세스를 종료하기 위해 PID를 저장해 둔 파일
+
 [[실습] nohup - 5분](training/nohup.md)
 
 ## watch 사용
@@ -379,29 +401,51 @@ echo "현재 시각은 $(date)"
 
 ## 디버깅 팁
 
-스크립트 상단에 `set -e` 를 추가하여 디버깅 정보 출력
+가장 먼저 `echo`로 변수값과 실행 위치를 확인한다.
+
+```bash
+#!/bin/bash
+
+echo "입력값: $input"
+echo "현재 파일: $file"
+```
+
+스크립트가 어떤 명령을 실행하는지 자세히 보고 싶을 때는 `bash -x`로 실행한다.
+
+```bash
+bash -x script.sh
+```
+
+오류가 발생하면 스크립트를 바로 중단하고 싶을 때는 스크립트 상단에 `set -e`를 추가할 수 있다.
+
+`set -e`가 없으면 중간 명령이 실패해도 다음 줄이 계속 실행될 수 있다.
+
+```bash
+#!/bin/bash
+
+echo "1. 시작"
+ls no_such_file.txt
+echo "2. 이 줄도 실행됨"
+```
+
+`set -e`를 추가하면 실패한 명령에서 스크립트가 바로 중단된다.
 
 ```bash
 #!/bin/bash
 
 set -e
-trap 'echo "오류: 줄 번호 $LINENO, 오류 코드: $?"' ERR
-```
 
-### 디버그 실행
-
-- x 옵션을 사용하여 스크립트의 각 명령어가 실행될 때 출력되도록 한다.
-
-```bash
-bash -x script.sh
+echo "1. 시작"
+ls no_such_file.txt
+echo "2. 이 줄은 실행되지 않음"
 ```
 
 [[번외] bash 로 실행과 ./ 로 실행 차이](extra/execute.md)
 
 ## 요약
 
-1. 쉘 스크립트는 순차적으로 명령어를 실행한다.
+1. 셸 스크립트는 순차적으로 명령어를 실행한다.
 2. 실행 권한을 부여하고 `./`로 실행한다.
 3. 백그라운드 실행, `nohup`, `watch`는 자동화 작업에 유용하다.
-4. 디버깅을 위해 `set -e`와 `trap`을 활용할 수 있다.
+4. 디버깅할 때는 `echo`, `bash -x`, `set -e`를 활용할 수 있다.
 5. `$(명령어)` 또는 ``명령어``를 통해 명령어 실행 결과를 문자열에 삽입할 수 있다.

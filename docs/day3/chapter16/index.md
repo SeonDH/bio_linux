@@ -1,15 +1,15 @@
 ---
-title: "16. 쉘 스크립트 고급"
+title: "16. 셸 스크립트 고급"
 nav_order: 22
 layout: default
 ---
 
 
-# 16. [실습] 쉘 스크립트 고급
+# 16. [실습] 셸 스크립트 고급
 
 아래 조건을 만족하는 스크립트를 작성한다.
-    - 파일에 대한 스크립트는 임의의 파일 이름(ex: yourfile.txt)이 있다고 가정한다.
-    - 디렉터리에 대한 스크립트도 임의의 디렉터리(ex: yourdir)가 존재한다고 가정한다.
+- 파일에 대한 스크립트는 임의의 파일 이름(ex: `yourfile.txt`)이 있다고 가정한다.
+- 디렉터리에 대한 스크립트도 임의의 디렉터리(ex: `yourdir`)가 존재한다고 가정한다.
 
 > 목적: 모든 스크립트가 반드시 동작할 필요는 없으며, 어떤 명령어를 어떻게 구성해야 할지 감을 잡는 것이 목표이다.
 
@@ -84,7 +84,7 @@ done
 echo "Total sum is: $total"
 ```
 
-3. cat /etc/passwd 가 어느 파일인지 확인해본다.
+3. `/etc/passwd` 파일에 어떤 사용자 정보가 들어 있는지 확인해본다.
 
 ```bash
 #!/bin/bash
@@ -94,6 +94,8 @@ done
 ```
 
 4.
+
+> 주의: 아래 스크립트는 예제 해석용이다. 실제 서버에서 그대로 실행하지 않는다.
 
 ```bash
 #!/bin/bash
@@ -115,13 +117,13 @@ greet "Alice"
 
 6.
 
-> 주의: 아래 스크립트는 예제 해석용이다. 실제 서버에서 그대로 실행하면 의도하지 않은 Java 프로세스까지 강제 종료할 수 있다.
+> 주의: 아래 스크립트는 예제 해석용이다. 실제 서버에서 그대로 실행하지 않는다.
 
 ```bash
 #!/bin/bash
-for process in $(ps aux | grep "java" | awk '{ print $2 }'); do
-    echo "Killing process: $process"
-    kill -9 $process
+for process in $(pgrep -f "my_analysis_job"); do
+    echo "Stopping process: $process"
+    kill $process
 done
 ```
 
@@ -155,6 +157,8 @@ echo "Fibonacci sequence at position 6 is: $result"
 ```
 
 9.
+
+> 주의: 아래 스크립트는 예제 해석용이다. 실제 서버에서 그대로 실행하지 않는다.
 
 ```bash
 #!/bin/bash

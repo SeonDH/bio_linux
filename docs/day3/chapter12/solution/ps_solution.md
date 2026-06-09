@@ -5,18 +5,24 @@
 1. 실행 중인 프로세스 목록에서 `sleep_script.sh` 프로세스를 확인한다.
 
     ```bash
-    $ ps -ef | grep sleep_script.sh | grep -v grep
+    ps -ef | grep sleep_script.sh | grep -v grep
+    ```
+
+    또는:
+
+    ```bash
+    pgrep -f sleep_script.sh
     ```
 
 
 2. 해당 프로세스를 종료한다.
 
     ```bash
-    $ kill {pid} 
+    kill {pid}
     ```
 
-    or 
+    또는:
 
     ```bash
-    $ pkill sleep_script.sh
+    pkill sleep_script.sh
     ```

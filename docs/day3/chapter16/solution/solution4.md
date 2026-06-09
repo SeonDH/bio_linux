@@ -39,7 +39,8 @@
 
 4. 홈 디렉터리 백업
 
-    - /backup 디렉터리가 없으면 생성하고, /home 디렉터리를 날짜 형식으로 압축하여 백업함.
+    - `/backup` 디렉터리가 없으면 생성하고, `/home` 디렉터리를 날짜 형식으로 압축하여 백업함.
+    - 예제 해석용이며, 실제 서버에서 그대로 실행하면 권한 문제나 큰 용량 문제가 발생할 수 있음.
 
     ```bash
     if [ ! -d "/backup" ]; then
@@ -60,14 +61,14 @@
     greet "Alice"
     ```
 
-6. java 프로세스 강제 종료
+6. 특정 분석 작업 프로세스 종료
 
-    - java라는 이름이 포함된 프로세스의 PID를 찾아 kill -9으로 강제 종료함
+    - `my_analysis_job`이라는 이름이 포함된 프로세스의 PID를 찾아 정상 종료 요청을 보냄.
 
     ```bash
-    for process in $(ps aux | grep "java" | awk '{ print $2 }'); do
-        echo "Killing process: $process"
-        kill -9 $process
+    for process in $(pgrep -f "my_analysis_job"); do
+        echo "Stopping process: $process"
+        kill $process
     done
     ```
 
@@ -105,7 +106,8 @@
     ```
 
 9. 로그 파일 압축
-    - /var/log 아래의 .log 파일을 찾아 하나씩 gzip으로 압축함.
+    - `/var/log` 아래의 `.log` 파일을 찾아 하나씩 gzip으로 압축함.
+    - 예제 해석용이며, 실제 서버에서 그대로 실행하면 시스템 로그 파일을 변경할 수 있음.
     ```bash
     #!/bin/bash
     for file in $(find /var/log -name "*.log"); do
@@ -123,4 +125,3 @@
     echo "Running processes:"
     ps -ef
     ```
-

@@ -19,14 +19,14 @@ layout: default
 
 ### scp 문법
 
-- 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
-    - ex) -o 옵션, -p 옵션
-    - 포트의 경우는 ssh 는 소문자(p) scp 는 대문자(P) - 문법의 차이
+- 내부적으로 SSH 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용한다.
+    - 예: `-o` 옵션, `-P` 옵션
+    - 포트 지정은 `ssh`에서는 소문자 `-p`, `scp`에서는 대문자 `-P`를 사용한다.
 
 - 원격 서버
-    - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
+    - `{접근 계정}@{접근할 서버}:{원격 서버의 경로}`
 - 내 개인 PC
-    - {경로 - 상대, 절대 모두 허용}
+    - `{경로}`: 상대 경로와 절대 경로 모두 사용 가능
 
 ```
 scp {보내는 곳 경로} {받는 곳 경로}
@@ -48,7 +48,7 @@ scp username@remote_host:/path/to/remote/file /path/to/local/
 
 ### [실습] scp
 
-- [실습] [scp - 5분](training/scp.md)
+- [[실습] scp - 5분](training/scp.md)
 
 
 
@@ -61,14 +61,14 @@ scp username@remote_host:/path/to/remote/file /path/to/local/
 ### 로컬 → 원격
 
 
-- 내부적으로 ssh 의 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용
-    - -e 옵션을 통해서 암호화 방식이나 포트 지정 가능
-        - 예: rsync -e 'ssh -p 1119 -o Ciphers=aes256-cbc'
+- 내부적으로 SSH 프로토콜을 사용하므로 동일한 포트 및 암호화 방식을 사용한다.
+    - `-e` 옵션을 통해서 암호화 방식이나 포트 지정 가능
+        - 예: `rsync -e 'ssh -p 1119 -o Ciphers=aes256-cbc'`
 
 - 원격 서버
-    - {접근 하는 계정}@{접근하고 싶은 서버}:{원격 서버의 경로}
+    - `{접근 계정}@{접근할 서버}:{원격 서버의 경로}`
 - 내 개인 PC
-    - {경로 - 상대, 절대 모두 허용}
+    - `{경로}`: 상대 경로와 절대 경로 모두 사용 가능
 
 ```
 rsync -avz {보내는 곳 경로} {받는 곳 경로}
@@ -87,15 +87,17 @@ rsync -avz /path/to/local/directory/ username@remote_host:/path/to/remote/
 
 ## 포트를 통한 파일 전송: `nc` (netcat)
 
+> `nc` 실습은 포트 개념을 이해하기 위한 선택 실습이다. 실제 파일 전송은 일반적으로 `scp` 또는 `rsync`를 우선 사용한다.
+
 * `nc`는 TCP/UDP 포트를 통해 데이터를 전송하는 도구이다.
 * **네트워크 포트가 열려 있어야 하며**, 단순하고 빠른 전송이 가능하다.
-* 개인 PC의 가상화 리눅스 서버와 테스트 할 수 있다.
+* 개인 PC의 가상화 리눅스 서버와 테스트할 수 있다.
 
 ### 받는 쪽 (서버)
 
-- 원하는 포트를 지정할 수 있으며 포트는 포트 번호는 0부터 65535까지 사용 가능.
-- 다른 사용자가 특정 포트를 점유하고 있으면 사용 불가능
-- 포트번호는 일치해야한다.
+- 원하는 포트를 지정할 수 있으며 포트 번호는 0부터 65535까지 사용할 수 있다.
+- 다른 사용자가 특정 포트를 점유하고 있으면 사용할 수 없다.
+- 포트 번호는 보내는 쪽과 받는 쪽이 일치해야 한다.
 
 ```bash
 nc -l -p {포트번호} | tar xzf -
@@ -110,7 +112,7 @@ tar czf - {파일 이름} | nc {접근하고 싶은 서버} {포트번호}
 
 ### [실습] nc
 
-- [실습] [nc - 5분](training/nc.md)
+- [[실습] nc - 5분](training/nc.md)
 
 
 
@@ -171,13 +173,13 @@ tar -cvf archive.tar file1 file2 dir/
 # 압축 해제
 tar -xvf archive.tar -C /path/to/unzip
 
-# gzip 압축 (z 옵션이 추가. 확장자를 tar.gz 로 맞춰주는게 좋다)
+# gzip 압축 (z 옵션 추가. 확장자는 tar.gz로 맞추는 것이 좋다)
 tar -czvf archive.tar.gz file1 dir/
 
 # gzip 해제
 tar -xzvf archive.tar.gz -C /path/to/unzip
 
-# bzip2 압축 (j 옵션이 추가. 확장자를 tar.bz2 로 맞춰주는게 좋다)
+# bzip2 압축 (j 옵션 추가. 확장자는 tar.bz2로 맞추는 것이 좋다)
 tar -cjvf archive.tar.bz2 file1 dir/
 
 # bzip2 해제
@@ -186,7 +188,7 @@ tar -xjvf archive.tar.bz2 -C /path/to/unzip
 
 ## 2. `gzip` 명령어
 
-- 일반 파일을 gzip 만 이용해서 압축
+- 일반 파일을 gzip만 이용해서 압축
 
 ```bash
 # 압축
@@ -202,7 +204,7 @@ zgrep pattern filename.gz
 
 ### 3. `bzip2` 명령어
 
-- 일반 파일을 bzip2 만 이용해서 압축
+- 일반 파일을 bzip2만 이용해서 압축
 
 ```bash
 # 압축
@@ -231,4 +233,4 @@ unzip archive.zip
 
 ### [실습] 파일 압축
 
-- [실습] [파일 압축 해제 - 10분](training/zip_unzip.md)
+- [[실습] 파일 압축 해제 - 10분](training/zip_unzip.md)

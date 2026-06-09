@@ -74,12 +74,29 @@ kill [옵션] PID
 pkill [옵션] 프로세스이름
 ```
 
+### pgrep
+
+* `pgrep` 명령어는 프로세스 이름을 기준으로 PID를 찾는다.
+* `ps`와 `grep`을 조합하는 것보다 간단하게 특정 프로세스의 PID를 확인할 수 있다.
+
+```bash
+pgrep [옵션] 프로세스이름
+```
+
+예:
+
+```bash
+pgrep -f sleep_script.sh
+```
+
+> `-f` 옵션은 실행 명령 전체에서 문자열을 찾는다.
+
 ## ps와 kill 조합
 
 `ps` 명령어로 PID를 확인한 뒤 `kill` 명령어로 종료하는 방식으로 원하는 프로세스를 제어할 수 있다.
 
 
-### ps 와 kill 을 조합해서 원하는 프로세스를 명령어로 종료 시킬 수 있다.
+### ps와 kill을 조합해 원하는 프로세스를 종료할 수 있다.
 
 ## [실습] PS 실습
 
@@ -88,7 +105,152 @@ pkill [옵션] 프로세스이름
 
 ## kill 스크립트에서 활용
 
-- 스크립트 실행 시 pid 를 반환 하는 파일을 생성
+장시간 실행되는 스크립트는 실행할 때 PID를 파일로 남겨두면 나중에 `kill` 명령어로 종료하기 쉽다.
+
+- 실행 스크립트가 자기 자신의 PID를 파일에 저장한다.
+- 종료 스크립트는 PID 파일을 읽어 해당 프로세스를 종료한다.
+- 종료 후에는 PID 파일을 삭제해 다음 실행 때 혼동을 줄인다.
+
+간단한 흐름은 다음과 같다.
+
+```bash
+# 실행 스크립트 작성
+vi start_sleep.sh
+
+# 종료 스크립트 작성
+vi stop_sleep.sh
+
+# 실행 권한 부여
+chmod +x start_sleep.sh stop_sleep.sh
+
+# 백그라운드 실행
+./start_sleep.sh &
+
+# 저장된 PID 확인
+cat sleep_script.pid
+
+# PID 파일을 이용해 종료
+./stop_sleep.sh
+```
+
+아래 예시에서 `echo $$ > "$PIDFILE"`은 현재 실행 중인 스크립트의 PID를 `sleep_script.pid` 파일에 저장한다는 뜻이다.
+
+- `$$`: 현재 실행 중인 셸 스크립트의 PID
+- `>`: 왼쪽 명령어의 출력 결과를 파일에 저장
+- `"$PIDFILE"`: PID를 저장할 파일 이름, 여기서는 `sleep_script.pid`
+
+즉 `echo $$ > "$PIDFILE"`은 현재 스크립트의 PID를 화면에 출력하지 않고 `sleep_script.pid` 파일에 기록한다.
+
+### 실행 스크립트: `start_sleep.sh`
+
+스크립트가 시작되면 자신의 PID를 `sleep_script.pid` 파일에 저장한다.
+
+```bash
+#!/bin/bash
+PIDFILE="sleep_script.pid"
+echo $$ > "$PIDFILE"
+
+cleanup() {
+  rm -f "$PIDFILE"
+  exit 0
+}
+
+trap cleanup EXIT SIGTERM SIGINT
+
+while true; do
+  echo "Running... $(date)"
+  sleep 1
+done
+```
+
+### 종료 스크립트: `stop_sleep.sh`
+
+PID 파일에서 프로세스 번호를 읽어 실행 중인 스크립트를 종료한다.
+
+```bash
+#!/bin/bash
+PIDFILE="sleep_script.pid"
+
+if [ -f "$PIDFILE" ]; then
+  PID=$(cat "$PIDFILE")
+  echo "Stopping process with PID: $PID"
+  kill "$PID"
+  rm -f "$PIDFILE"
+else
+  echo "PID file does not exist."
+fi
+```
+
+### `trap`과 종료 신호
+
+`trap`은 셸 스크립트에서 특정 신호나 종료 상황이 발생했을 때 실행할 명령을 등록하는 기능이다.
+
+위 실행 스크립트의 핵심은 다음 부분이다.
+
+```bash
+cleanup() {
+  rm -f "$PIDFILE"
+  exit 0
+}
+
+trap cleanup EXIT SIGTERM SIGINT
+```
+
+`trap cleanup EXIT SIGTERM SIGINT`는 스크립트가 종료되거나 종료 요청을 받았을 때 `cleanup` 함수를 실행하라는 뜻이다. 이 예제에서는 스크립트가 끝날 때 `sleep_script.pid` 파일을 자동으로 삭제한다.
+
+프로세스 제어에서 자주 만나는 신호는 다음과 같다.
+
+| 신호 | 발생 상황 | 설명 |
+| --- | --- | --- |
+| `SIGINT` | `Ctrl + C` 입력 | 사용자가 현재 실행 중인 작업을 중단 |
+| `SIGTERM` | `kill PID` 실행 | 프로세스에 정상 종료 요청 |
+| `SIGHUP` | 터미널 또는 SSH 연결 종료 | 연결이 끊겼음을 알림 |
+| `SIGKILL` | `kill -9 PID` 실행 | 즉시 강제 종료, `trap`으로 처리할 수 없음 |
+| `EXIT` | 셸 스크립트 종료 | 스크립트가 끝날 때 정리 작업 실행 |
+
+`trap`은 PID 파일 삭제, 임시 파일 삭제, 로그 남기기처럼 스크립트 종료 전에 정리해야 할 작업에 자주 사용된다.
+
+### `kill`과 `kill -9` 비교
+
+`kill PID`는 기본적으로 `SIGTERM` 신호를 보내 정상 종료를 요청한다. 이 경우 스크립트는 종료되기 전에 `trap`에 등록된 정리 작업을 실행할 수 있다.
+
+```bash
+# 스크립트 실행
+./start_sleep.sh &
+
+# PID 확인
+cat sleep_script.pid
+
+# 정상 종료 요청
+kill $(cat sleep_script.pid)
+
+# 정리 작업이 실행될 시간을 잠시 기다림
+sleep 2
+
+# PID 파일이 삭제되었는지 확인
+ls sleep_script.pid 2>/dev/null || echo "PID 파일이 삭제됨"
+```
+
+반면 `kill -9 PID`는 `SIGKILL` 신호를 보내 프로세스를 즉시 강제 종료한다. 이 신호는 프로세스가 처리할 수 없으므로 `trap cleanup EXIT`도 실행되지 않는다.
+
+```bash
+# 다시 실행
+./start_sleep.sh &
+
+# 강제 종료
+kill -9 $(cat sleep_script.pid)
+
+# 강제 종료 후 상태 확인을 위해 잠시 기다림
+sleep 2
+
+# trap이 실행되지 않았기 때문에 PID 파일이 남아 있을 수 있다
+ls sleep_script.pid
+
+# 남은 PID 파일 정리
+rm -f sleep_script.pid
+```
+
+따라서 먼저 `kill PID`로 정상 종료를 시도하고, 그래도 종료되지 않을 때만 `kill -9 PID`를 사용하는 것이 좋다.
 
 ## 시스템 자원의 이해: CPU, 메모리, 디스크
 
@@ -162,43 +324,6 @@ echo "=== 확인 완료 ==="
 ```
 
 
-
-## 프로세스 제어 스크립트 예시
-
-### 스크립트 실행 시 PID 저장
-
-```bash
-#!/bin/bash
-PIDFILE="sleep_script.pid"
-echo $$ > "$PIDFILE"
-
-cleanup() {
-  rm -f "$PIDFILE"
-  exit 0
-}
-
-trap cleanup EXIT
-
-echo "Sleeping for 100 seconds..."
-sleep 100
-echo "Finished."
-```
-
-### PID 기반 종료 스크립트
-
-```bash
-#!/bin/bash
-PIDFILE="sleep_script.pid"
-
-if [ -f "$PIDFILE" ]; then
-  PID=$(cat "$PIDFILE")
-  echo "Stopping process with PID: $PID"
-  kill "$PID"
-  rm -f "$PIDFILE"
-else
-  echo "PID file does not exist."
-fi
-```
 
 ## top 명령어
 

@@ -21,14 +21,14 @@ file="yourfile.txt"
 chmod 644 "$file"
 
 
-# 5. 문자열 치환
+# 4. 문자열 치환
 file="yourfile.txt"
 sed -i 's/oldstring/newstring/g' "$file"
 
 
-# 6. 프로세스 상태 체크 및 실행
+# 5. 프로세스 상태 체크 및 실행
 process="yourprocess"
-if ps -ef | grep "$process" > /dev/null; then
+if pgrep -f "$process" > /dev/null; then
   echo "$process is running"
 else
   echo "$process is not running"
@@ -36,16 +36,12 @@ else
 fi
 
 
-# 7. IP 주소 확인
-ip addr | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1
+# 6. IP 주소 확인
+ip addr show
 
 
-# 8. 로그 파일에서 특정 단어 감시
+# 7. 로그 파일에서 특정 단어 감시
 file="yourlogfile.log"
 word="ERROR"
-tail -f "$file" | while read line; do
-  if [[ "$line" == *"$word"* ]]; then
-    echo "$word found: $line"
-  fi
-done
+tail -f "$file" | grep "$word"
 ```

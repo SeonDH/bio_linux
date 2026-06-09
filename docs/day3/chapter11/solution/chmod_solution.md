@@ -18,7 +18,14 @@
     chmod u+x hello.sh
     ```
 
-4. 정상 출력
+4. 다시 실행하면 정상 출력
+
+    ```bash
+    ./hello.sh
     ```
-    "Hello, World!"
+
+    출력:
+
+    ```
+    Hello, World!
     ```

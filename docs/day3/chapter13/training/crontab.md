@@ -10,13 +10,21 @@ cd ~/cron
 #### 파일 생성: `do_nothing.sh`
 
 ```bash
+vi do_nothing.sh
+```
+
+```bash
 #!/bin/bash
 # 이 스크립트는 아무 작업도 수행하지 않는다.
 ```
 
-#### 파일 생성: `file_creater.sh`
+#### 파일 생성: `file_creator.sh`
 
 ※ `TARGET_DIR`에는 본인의 작업 디렉터리(절대 경로)를 입력할 것
+
+```bash
+vi file_creator.sh
+```
 
 ```bash
 #!/bin/bash
@@ -35,16 +43,16 @@ touch "$FILEPATH"
 
 ```bash
 chmod +x do_nothing.sh
-chmod +x file_creater.sh 
+chmod +x file_creator.sh
 ```
 
-### crontab 을 vi 로 열고 싶을 때 (nano 설정 시)
+### crontab을 vi로 열고 싶을 때 (nano 설정 시)
 
 ```
 export VISUAL=vi
 ```
 
-### crontab 을 nano 로 열고 싶을 떄 (vi 설정 시)
+### crontab을 nano로 열고 싶을 때 (vi 설정 시)
 
 ```
 export VISUAL=nano
@@ -53,9 +61,9 @@ export VISUAL=nano
 ## 실습 문제
 
 1. `do_nothing.sh` 스크립트를 매일 새벽 3시에 실행되도록 크론탭에 등록한다.
-2. `file_creater.sh` 스크립트를 매분 실행되도록 등록한다.
+2. `file_creator.sh` 스크립트를 매분 실행되도록 등록한다.
 3. 현재 설정된 크론탭 목록을 확인한다.
-4. 등록된 크롭탭을 제거한다.
+4. 등록된 크론탭을 제거한다.
 
 ## [답지] 답지 예시
 

@@ -24,7 +24,7 @@ cp "$src" "$dst"
 
 # 4. 환경 변수 출력
 read -p "Enter the name of the environment variable: " var_name
-echo "${!var_name}"
+printenv "$var_name"
 
 # 5. 문자열 길이
 read -p "Enter a string: " str
@@ -39,7 +39,13 @@ case "$op" in
   +) result=$((num1 + num2)) ;;
   -) result=$((num1 - num2)) ;;
   \*) result=$((num1 * num2)) ;;
-  /) result=$((num1 / num2)) ;;
+  /)
+    if [ "$num2" -eq 0 ]; then
+      echo "Cannot divide by zero"
+      exit 1
+    fi
+    result=$((num1 / num2))
+    ;;
   *) echo "Invalid operator"; exit 1 ;;
 esac
 
@@ -48,7 +54,7 @@ echo "Result: $result"
 # 7. 문자열 포함 여부
 read -p "Enter the main string: " str
 read -p "Enter the substring to search for: " sub
-if [[ "$str" == *"$sub"* ]]; then
+if echo "$str" | grep -q "$sub"; then
   echo "String contains $sub"
 else
   echo "String does not contain $sub"

@@ -20,9 +20,7 @@ fi
 
 # 4. 파일 읽기
 file="yourfile.txt"
-while IFS= read -r line; do
-  echo "$line"
-done < "$file"
+cat "$file"
 
 # 5. 조건문 사용
 number=15
@@ -47,7 +45,7 @@ date
 # 9. 파일 크기 확인
 file="yourfile.txt"
 if [ -e "$file" ]; then
-  stat -c%s "$file"
+  ls -lh "$file"
 else
   echo "File does not exist"
 fi
