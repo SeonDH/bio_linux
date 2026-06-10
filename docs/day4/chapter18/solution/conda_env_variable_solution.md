@@ -39,9 +39,9 @@ vi environment.yml
 ```yaml
 name: bio_env_yaml
 channels:
-  - conda-forge
+  - defaults
 dependencies:
-  - figlet
+  - python=3.9
 variables:
   BIO_PROJECT: "YAML"
 ```
@@ -66,10 +66,10 @@ conda activate bio_env_yaml
 BIO_PROJECT: YAML
 ```
 
-`dependencies`에 적은 `figlet`이 설치되었는지 확인한다.
+`dependencies`에 적은 Python 3.9가 설치되었는지 확인한다.
 
 ```bash
-figlet CONDA
+python --version
 ```
 
 ## 4. `activate.d` 스크립트 방식
@@ -108,7 +108,7 @@ conda deactivate
 
 - `environment.yml` 방식: 환경을 파일로 정의하고 다시 만들기 쉽다.
 - `dependencies` 항목: 환경을 만들 때 설치할 패키지를 함께 적을 수 있다.
-- `channels` 항목: 패키지를 받을 저장소를 지정한다. 이 예시에서는 `figlet` 설치를 위해 `conda-forge`를 사용한다.
+- `channels` 항목: 패키지를 받을 저장소를 지정한다. 이 예시에서는 기본 저장소인 `defaults`를 사용한다.
 - `activate.d` 방식: 환경이 활성화될 때 실행할 명령을 직접 넣을 수 있어 더 유연하다.
 
 ## 7. 실습 환경 정리

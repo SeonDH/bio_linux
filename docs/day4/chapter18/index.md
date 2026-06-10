@@ -84,9 +84,9 @@ $ conda --version
 ```yaml
 name: myenv
 channels:
-  - conda-forge
+  - defaults
 dependencies:
-  - figlet
+  - python=3.9
 variables:
   VALUE1: "hello"
 ```
@@ -102,7 +102,7 @@ $ conda env create -f environment.yml
 ```bash
 $ conda activate myenv
 $ echo $VALUE1  # hello
-$ figlet CONDA
+$ python --version
 ```
 
 ### 4. 환경 비활성화

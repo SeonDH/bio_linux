@@ -39,11 +39,11 @@ chmod +x check_env.sh
 
 1. `environment.yml`을 이용해 `bio_env_yaml` 환경을 만든다.
     - 환경 변수 `BIO_PROJECT` 값은 `YAML`로 설정한다.
-    - `conda-forge` 채널에서 `figlet` 패키지가 설치되도록 설정한다.
+    - `dependencies`에 `python=3.9`를 넣어 Python이 환경 안에 자동 설치되도록 설정한다.
 
 2. `bio_env_yaml` 환경을 활성화하고 `check_env.sh`를 실행해 결과를 확인한다.
 
-3. `bio_env_yaml` 환경에서 `figlet CONDA` 명령어가 실행되는지 확인한다.
+3. `bio_env_yaml` 환경에서 `python --version`을 실행해 `dependencies`에 적은 Python이 설치되었는지 확인한다.
 
 4. `bio_env_script`라는 Conda 환경을 만든다.
 
