@@ -22,3 +22,7 @@ EOL
 2. `info.log` 파일 끝에 "Log file created"라는 메시지를 추가해보자  
 
 3. `system.log` 파일을 시간순으로 정렬한 뒤 `sorted`라는 파일로 저장해보자  
+
+## 답지
+
+- [답지 예시](../solution/redirection_solution.md)

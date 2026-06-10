@@ -49,3 +49,7 @@ $ ./hello.sh
 - `hello.sh` 파일을 삭제한다
 - 하드 링크(`hello_h.sh`) 실행 결과를 확인한다
 - 심볼릭 링크(`hello_s.sh`) 실행 결과를 확인한다
+
+## 답지
+
+- [답지 예시](../solution/link_solution.md)

@@ -18,3 +18,7 @@ $ dd if=/dev/zero of=large_file.txt bs=1M count=1
 3. 크기가 10KB 초과인 파일을 찾으세요.
 
 4. 크기가 10KB 미만인 파일을 찾으세요.
+
+## 답지
+
+- [답지 예시](../solution/file_solution.md)

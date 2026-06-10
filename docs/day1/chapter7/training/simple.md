@@ -18,3 +18,7 @@ $ cd ~
 hello
  this is vi test.
 ```
+
+## 답지
+
+- [답지 예시](../solution/simple_solution.md)

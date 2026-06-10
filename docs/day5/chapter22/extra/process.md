@@ -32,8 +32,8 @@
 ### 리눅스 프로세스
 
 ```
-# 백그라운드에서 sleep 100 프로세스를 실행
-sleep 100 &
+# 백그라운드에서 sleep 30 프로세스를 실행
+sleep 30 &
 
 # 실행 중인 프로세스 목록 보기
 ps aux | grep sleep
@@ -43,7 +43,7 @@ ps aux | grep sleep
 
 ```
 # 백그라운드에서 도커 컨테이너를 실행
-docker run -d --name my-container alpine sleep 100
+docker run -d --name my-container alpine sleep 30
 
 # 실행 중인 도커 컨테이너 목록 보기
 docker ps

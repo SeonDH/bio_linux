@@ -37,3 +37,7 @@ $ cd ~
 
     - `MY_NAME` 를 영구적으로 사용할 수 있도록 설정해본다.
         - 힌트: `~/.bashrc` 파일에 `export` 구문을 추가하고 `source` 명령어로 적용할 수 있다.
+
+## 답지
+
+- [답지 예시](../solution/shell_solution.md)

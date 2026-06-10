@@ -74,9 +74,9 @@ tail -n 5 practice.txt
 - `tail -f filename`: 파일의 마지막 부분을 실시간으로 모니터링하며, 새로운 내용이 추가되면 자동으로 출력한다.
 
 ```bash
-while true; do echo "Log entry $(date)" >> logfile.txt; sleep 1; done & echo $! > mypid.txt
-tail -f logfile.txt
-kill $(cat mypid.txt)
+for i in {1..5}; do echo "Log entry $(date)" >> logfile.txt; sleep 1; done & echo $! > mypid.txt
+timeout 6s tail -f logfile.txt
+rm -f mypid.txt
 ```
 
 ### 6. `nl` 명령어

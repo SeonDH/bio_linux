@@ -42,3 +42,7 @@ $ cd ~/first/second
 ### 5. 디렉터리 파일 목록 확인
 
 - `/bin` 디렉터리 내 모든 파일과 상세 정보를 확인해본다.
+
+## 답지
+
+- [답지 예시](../solution/move_solution.md)

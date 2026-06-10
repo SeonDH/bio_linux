@@ -28,3 +28,6 @@ EOL
 
 4. 정렬해서 출력하자
 
+## 답지
+
+- [답지 예시](../solution/filter_solution.md)

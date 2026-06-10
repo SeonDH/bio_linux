@@ -7,3 +7,7 @@
 1. `cowsay` 패키지를 APT 명령어로 설치한다.
 2. `cowsay` 명령어를 실행해본다.
 3. `cowsay` 패키지를 제거한다.
+
+## 답지
+
+- [답지 예시](../solution/package_solution.md)

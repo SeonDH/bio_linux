@@ -13,7 +13,7 @@ cd ~/nohup
 ```bash
 #!/bin/bash
 LOG_FILE="logfile.txt"
-while true; do
+for i in {1..30}; do
   echo "Log entry $(date)" >> "$LOG_FILE"
   sleep 1
 done
@@ -65,10 +65,10 @@ ps -p $(cat create_log_file.pid) -o pid,ppid,stat,cmd
 로그가 계속 쌓이는지 확인한다.
 
 ```bash
-tail -f logfile.txt
+timeout 10s tail -f logfile.txt
 ```
 
-확인을 마치면 `Ctrl + C`로 `tail`만 종료한다. `create_log_file.sh`는 계속 실행 중이다.
+`tail`은 10초 뒤 자동 종료된다. `create_log_file.sh`는 최대 30초 동안 실행된 뒤 자동 종료된다.
 
 ### 3. `nohup`과 `bg` 차이 확인
 
@@ -88,6 +88,7 @@ tail logfile.txt
 - `jobs`는 현재 셸에서 시작한 작업만 보여준다.
 - `nohup`으로 실행한 작업은 새 터미널의 `jobs`에는 보이지 않을 수 있다.
 - PID 파일을 남겨두면 `ps`와 `kill`로 프로세스를 직접 관리할 수 있다.
+- 30초가 지나면 예제 스크립트가 자동 종료될 수 있다.
 
 ### 4. `nohup` 프로세스 종료
 
@@ -99,3 +100,7 @@ rm -f create_log_file.pid
 ```
 
 `ps` 결과에 프로세스가 나오지 않으면 종료된 것이다.
+
+## 답지
+
+- [답지 예시](../solution/nohup_solution.md)

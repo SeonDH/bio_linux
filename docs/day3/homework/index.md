@@ -11,12 +11,16 @@
 
     ```bash
     #!/bin/bash
-    for i in {1..100}; do
+    for i in {1..10}; do
       echo "현재 사용자: $USER"
-      sleep 60
+      sleep 3
     done
     ```
     1. 실행 권한을 부여하고 백그라운드로 실행한다.
     2. 백그라운드에서 실행 중인 `process.sh`를 확인하고 종료한다.
 
 4. 리눅스 서버에서 만든 `process.sh` 파일을 `scp`를 이용해서 내 로컬 컴퓨터로 이동시킨다.
+
+## 답지
+
+- [답지 예시](solution/index.md)

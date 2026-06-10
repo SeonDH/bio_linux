@@ -22,4 +22,4 @@ mkdir -p ~/zip2
 
 ## 답지
 
-- [답지](../solution/zip_unzip_solution.md)
+- [답지 예시](../solution/zip_unzip_solution.md)

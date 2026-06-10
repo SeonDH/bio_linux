@@ -157,7 +157,7 @@ cleanup() {
 
 trap cleanup EXIT SIGTERM SIGINT
 
-while true; do
+for i in {1..30}; do
   echo "Running... $(date)"
   sleep 1
 done

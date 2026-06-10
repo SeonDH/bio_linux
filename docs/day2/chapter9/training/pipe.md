@@ -33,3 +33,6 @@ EOL
 
     힌트: cut, sort, uniq -c, sort -nr, head
 
+## 답지
+
+- [답지 예시](../solution/pipe_solution.md)

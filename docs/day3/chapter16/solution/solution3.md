@@ -43,5 +43,5 @@ ip addr show
 # 7. 로그 파일에서 특정 단어 감시
 file="yourlogfile.log"
 word="ERROR"
-tail -f "$file" | grep "$word"
+timeout 30s tail -f "$file" | grep "$word"
 ```

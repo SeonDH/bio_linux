@@ -10,3 +10,7 @@ $ wget -O practice4.txt https://raw.githubusercontent.com/SeonDH/bio_linux/refs/
 
 1. practice4.txt 를 vi 로 켠다
 2. 텍스트의 내용을 하나씩 실행해본다.
+
+## 답지
+
+- [답지 예시](../solution/replace_solution.md)
