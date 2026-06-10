@@ -1,11 +1,13 @@
 ---
-title: "20. MySQL 실습 기초"
+title: "20. MySQL 따라하기 기초"
 nav_order: 26
 layout: default
 ---
 
 
-# 20. MySQL 실습 기초
+# 20. MySQL 따라하기 기초
+
+> 이 장은 MySQL을 깊게 배우기 위한 장이 아니라, 데이터베이스와 SQL 문법의 기본 형태를 가볍게 확인하는 보조 실습이다. 명령어를 외우기보다 예제를 보고 따라 실행하면서 데이터베이스, 테이블, 행, 열의 구조를 이해하는 데 집중한다.
 
 ## 데이터베이스란?
 
@@ -52,7 +54,7 @@ CREATE DATABASE database_name; --데이터베이스 생성
 DROP DATABASE database_name;   --데이터베이스 삭제
 ```
 
-## [실습] 데이터베이스 생성
+## [따라하기] 데이터베이스 생성
 
 ```sql
 CREATE DATABASE library;
@@ -78,7 +80,7 @@ DROP TABLE table_name;
 
 ## 테이블 생성 및 관리
 
-### [실습] 테이블 생성
+### [따라하기] 테이블 생성
 
 ```sql
 -- 데이터베이스 사용
@@ -123,7 +125,7 @@ CREATE TABLE books (
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 ```
 
-## [실습] 데이터 삽입
+## [따라하기] 데이터 삽입
 
 ```sql
 -- authors 데이터 삽입
@@ -151,7 +153,7 @@ SELECT DISTINCT column1 FROM table_name;
 SELECT column1, column2 FROM table_name ORDER BY column1 [ASC|DESC];
 ```
 
-## [실습] 데이터 조회
+## [따라하기] 데이터 조회
 
 
 ```sql
@@ -177,7 +179,7 @@ UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
 DELETE FROM table_name WHERE condition;
 ```
 
-## [실습] 데이터 수정 및 삭제
+## [따라하기] 데이터 수정 및 삭제
 
 ```sql
 -- 책 가격 업데이트
@@ -207,7 +209,7 @@ SELECT * FROM authors WHERE name IN ('J.K. Rowling', 'George R.R. Martin');
 SELECT * FROM authors WHERE birthdate IS NULL;
 ```
 
-## [실습] 조건문으로 조회
+## [따라하기] 조건문으로 조회
 
 ```sql
 -- 특정 가격 범위 내의 책 조회 (BETWEEN 사용)
@@ -246,7 +248,7 @@ SELECT MAX(price) FROM books;
 SELECT MIN(price) FROM books;
 ```
 
-## [실습] 함수 사용
+## [따라하기] 함수 사용
 
 ```sql
 -- 책 제목 결합 (CONCAT 사용)
@@ -296,7 +298,7 @@ SELECT NOW();
     RIGHT JOIN table2 ON table1.common_column = table2.common_column;
     ```
 
-## [실습] 조인
+## [따라하기] 조인
 
 ```sql
 -- 작가와 그 작가의 책 조회 (JOIN 사용)

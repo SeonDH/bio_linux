@@ -17,16 +17,31 @@ sinfo
 ```bash
 conda create -n py2 python=2.7 -y
 conda create -n py3 python=3 -y
+```
 
+Python 2.x 환경 확인:
+
+```bash
 conda activate py2
 python --version
+```
 
+Python 3.x 환경 확인:
+
+```bash
 conda activate py3
 python --version
 conda deactivate
 ```
 
-## 3. MySQL 실습
+실습 후 환경 삭제:
+
+```bash
+conda remove -n py2 --all -y
+conda remove -n py3 --all -y
+```
+
+## 3. MySQL 따라하기
 
 ```sql
 CREATE DATABASE homework;

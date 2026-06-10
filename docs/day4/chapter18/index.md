@@ -84,9 +84,9 @@ $ conda --version
 ```yaml
 name: myenv
 channels:
-  - defaults
+  - conda-forge
 dependencies:
-  - python=3.9
+  - figlet
 variables:
   VALUE1: "hello"
 ```
@@ -102,6 +102,7 @@ $ conda env create -f environment.yml
 ```bash
 $ conda activate myenv
 $ echo $VALUE1  # hello
+$ figlet CONDA
 ```
 
 ### 4. 환경 비활성화
@@ -111,9 +112,9 @@ $ conda deactivate
 ```
 
 
-## Conda 패키지 가이드
+## Conda 환경 변수 확인
 
-### 1. Conda 가상 환경 변수 등록
+### 1. 외부 환경 변수 등록
 
 ```bash
 $ export VALUE1=external_value1
@@ -122,29 +123,20 @@ $ echo $VALUE1
 $ echo $VALUE2
 ```
 
-### 2. Python 설치 및 버전 확인
-
-```bash
-$ sudo apt install python3
-$ python3 --version
-```
-
-### 3. 설치한 Conda 환경 활성화
+### 2. 설치한 Conda 환경 활성화
 
 ```bash
 $ conda activate myenv
 $ echo $VALUE1
 $ echo $VALUE2
-$ python3 --version
 ```
 
-### 4. Conda 비활성화
+### 3. Conda 비활성화
 
 ```bash
 $ conda deactivate
 $ echo $VALUE1
 $ echo $VALUE2
-$ python3 --version
 ```
 
 ## Conda 활성화/비활성화 시 실행되는 스크립트
@@ -170,6 +162,8 @@ $ mkdir -p ~/miniconda3/envs/myenv/etc/conda/deactivate.d
 $ echo 'export SCRIPT_VALUE="after_deactive"' > ~/miniconda3/envs/myenv/etc/conda/deactivate.d/env_vars.sh
 $ chmod +x ~/miniconda3/envs/myenv/etc/conda/deactivate.d/env_vars.sh
 ```
+
+[[실습] Conda 환경별 변수 확인 - 15분](training/conda_env_variable.md)
 
 
 ## Conda vs Miniconda vs Anaconda

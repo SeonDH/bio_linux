@@ -3,7 +3,8 @@
 1. Day 5 SLURM 실습 준비
     - 로컬 Linux 환경에서 패키지 관리 도구를 이용해 SLURM 관련 구성 요소를 설치하고, 단일 노드 실습용으로 동작을 확인한다.
 2. conda 를 이용해서 Python 2.x 와 3.x 를 사용하는 환경을 만들어보고, 환경별로 실행 버전이 달라짐을 확인한다.
-3. 로컬 Linux에 mysql 설치 후 아래 실습을 진행한다.
+3. MySQL은 중요도가 높지 않으므로, 로컬 Linux에서 예제를 보고 따라 실행하며 기본 구조만 확인한다.
+    - 아래 내용은 정답을 외우기 위한 과제가 아니라, database, table, row, column 개념을 확인하기 위한 따라하기 실습이다.
     1. mysql 에 `homework` database 를 생성한다.
     2. `homework` database 안에 `student` 라는 테이블을 생성한다. 테이블은 아래와 같은 컬럼들을 포함한다.
         1. student_id (숫자)
