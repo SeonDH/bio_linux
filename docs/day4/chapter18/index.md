@@ -68,6 +68,11 @@ $ echo 'eval "$(~/miniconda3/bin/conda shell.bash hook)"' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
+`eval`은 문자열로 만들어진 명령어를 현재 쉘에서 다시 해석해 실행하는 명령어다.
+여기서는 `conda shell.bash hook`이 출력하는 Conda 초기화 명령을 `~/.bashrc`에 등록하기 위해 사용한다.
+
+단, `eval`은 문자열을 명령어로 실행하므로 출처를 모르는 명령에는 사용하지 않는 것이 좋다.
+
 ### 4. 설치 확인
 
 ```bash
