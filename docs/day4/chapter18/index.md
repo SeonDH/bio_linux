@@ -48,6 +48,17 @@ Miniconda는 Conda와 Python만 포함한 가장 가벼운 설치 버전이다.
 $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
+> 설치 실행 시 `Installer requires GLIBC >=2.28, but system has 2.27.` 메시지가 나오면,
+> 현재 리눅스의 GLIBC 버전이 최신 Miniconda 설치 파일 요구사항보다 낮은 것이다.
+> 이 경우 아래처럼 Python 3.10 기반의 이전 Miniconda 설치 파일을 사용한다.
+
+```bash
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh
+$ bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh
+```
+
+> 위 대체 설치 파일을 실행했다면, 아래 2번 설치 실행 단계는 건너뛰고 3번 환경 변수 등록으로 넘어간다.
+
 - Apple Silicon 환경
 ```bash
 $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
