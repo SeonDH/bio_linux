@@ -251,7 +251,7 @@ CMD ["./echo_docker.sh"]
 
 이 실습에서는 실제 유전체 데이터나 전문 바이오 분석 툴을 사용하지 않는다. 임의의 문자열이 많이 들어 있는 텍스트 파일을 가상의 분석 데이터로 보고, 컨테이너 안에서 `grep`, `wc`, `awk` 같은 리눅스 기본 명령어를 실행한다.
 
-- [[실습] Docker 배치 파이프라인 - 30분](training/batch_pipeline.md)
+- [[실습] Docker 배치 파이프라인 - 20분](training/batch_pipeline.md)
 
 실제 바이오 분석 환경에서는 이 구조를 직접 `docker run`으로 실행하기도 하지만, 기관이나 서버 환경에 따라 Nextflow, Snakemake 같은 워크플로 도구나 Apptainer/Singularity 같은 HPC 친화적인 컨테이너 도구를 통해 실행하기도 한다.
 
