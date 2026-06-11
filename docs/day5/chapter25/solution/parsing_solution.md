@@ -9,7 +9,7 @@ nav_exclude: true
 ### 1. 품질 점수가 낮은 read 필터링
 
 ```bash
-awk 'NR%4==0 && ($0 ~ /[!*'\''"]/)' data/ex01.fastq
+awk "NR%4==0 && (\$0 ~ /[!*']/)" data/ex01.fastq
 ```
 
 > 출력된 라인에 해당하는 read 1개(총 4줄)를 제거하는 스크립트로 확장 가능
@@ -46,14 +46,14 @@ awk '$3 == "gene"' data/ex05.gtf
 ### 6. 특정 유전자 ID만 추출
 
 ```bash
-awk '$9 ~ /gene_id "GENE1"/' data/ex06.gtf
+awk '$0 ~ /gene_id "GENE1"/' data/ex06.gtf
 ```
 
 
 ### 7. 압축된 FASTQ 읽기
 
 ```bash
-zcat data/ex07.fastq.gz | head -n 8
+gzip -cd data/ex07.fastq.gz | head -n 8
 ```
 
 

@@ -13,7 +13,6 @@
 
 ```bash
 mkdir -p ~/docker_batch/input ~/docker_batch/output
-cd ~/docker_batch
 ```
 
 ## 2. 실습 데이터 준비
@@ -22,6 +21,7 @@ cd ~/docker_batch
 
 ```bash
 cp docs/day5/chapter22/data/mock_data.txt ~/docker_batch/input/mock_data.txt
+cd ~/docker_batch
 ```
 
 데이터 일부를 확인한다.

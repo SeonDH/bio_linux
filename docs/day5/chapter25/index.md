@@ -26,7 +26,7 @@ layout: default
 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAAT
 +
 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
-````
+```
 
 **기본 블록 출력**
 

@@ -31,7 +31,7 @@ SLURM(Scheduler for Large-scale Resource Management)은 오픈 소스 클러스�
 
 ```bash
 sudo apt update
-sudo apt install slurm-wlm munge
+sudo apt install -y slurm-wlm munge
 ```
 
 ## Munge 설정
@@ -58,13 +58,21 @@ sudo mkdir -p /var/spool/slurmd
 sudo mkdir -p /var/spool/slurmctld
 sudo mkdir -p /var/log/slurm
 
-sudo chown slurm: /var/spool
-sudo chown slurm: /var/spool/slurmd
-sudo chown slurm: /var/spool/slurmctld
-sudo chown slurm: /var/log/slurm
+sudo chown -R slurm:slurm /var/spool/slurmd
+sudo chown -R slurm:slurm /var/spool/slurmctld
+sudo chown -R slurm:slurm /var/log/slurm
 ```
 
 ## SLURM 설정 예시 (`/etc/slurm/slurm.conf`)
+
+먼저 현재 서버의 호스트 이름과 CPU 개수를 확인한다.
+
+```bash
+hostname -s
+nproc
+```
+
+아래 설정에서 `{호스트이름}`은 `hostname -s` 결과로, `CPUs=2`는 `nproc` 결과에 맞게 수정한다.
 
 ```conf
 ClusterName=single-cluster

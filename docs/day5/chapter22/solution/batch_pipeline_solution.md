@@ -4,8 +4,8 @@
 
 ```bash
 mkdir -p ~/docker_batch/input ~/docker_batch/output
-cd ~/docker_batch
 cp docs/day5/chapter22/data/mock_data.txt ~/docker_batch/input/mock_data.txt
+cd ~/docker_batch
 head input/mock_data.txt
 wc -l input/mock_data.txt
 ```

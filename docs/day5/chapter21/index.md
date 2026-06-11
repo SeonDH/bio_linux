@@ -12,6 +12,15 @@ layout: default
 - 이들 도구를 사용하면 하나의 터미널 세션에서 여러 창을 열고, 세션을 백그라운드로 보내거나, 세션을 분리했다가 다시 연결할 수 있다. 이는 특히 원격 서버에서 작업할 때 유용하다.
 - 특징: 내가 터미널을 닫아도 세션이 그대로 남아있는다 (exit로 명시적으로 종료하는 경우 사라짐)
 
+## 설치
+
+Ubuntu 계열 Linux 기준:
+
+```bash
+sudo apt update
+sudo apt install -y screen tmux
+```
+
 ## screen
 
 ### 기본 명령어

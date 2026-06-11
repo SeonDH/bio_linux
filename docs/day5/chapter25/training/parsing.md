@@ -52,13 +52,13 @@
 
 * 파일: [`data/ex06.gtf`](../data/ex06.gtf)
 * 조건: gene\_id가 "GENE1"인 라인
-* 명령어 예시: `awk '$9 ~ /GENE1/'`
+* 명령어 예시: `awk '$0 ~ /gene_id "GENE1"/'`
 
 ### 7. 압축된 FASTQ 읽기
 
 * 파일: [`data/ex07.fastq.gz`](../data/ex07.fastq.gz)
 * 조건: 압축 해제하지 않고 2개 read 추출
-* 명령어 예시: `zcat data/ex07.fastq.gz | head -n 8`
+* 명령어 예시: `gzip -cd data/ex07.fastq.gz | head -n 8`
 
 ### 8. chromosome별 변이 개수 세기
 
@@ -82,4 +82,3 @@
 ## [답지]
 - [답지 예시](../solution/parsing_solution.md)
   
-
