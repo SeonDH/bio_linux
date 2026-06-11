@@ -17,10 +17,11 @@ mkdir -p ~/docker_batch/input ~/docker_batch/output
 
 ## 2. 실습 데이터 준비
 
-교재 저장소를 로컬에 받아둔 상태라면, 저장소 루트에서 아래 명령어로 복사한다.
+실습 데이터는 GitHub에 올라가 있는 예제 파일을 `wget`으로 내려받는다.
 
 ```bash
-cp docs/day5/chapter22/data/mock_data.txt ~/docker_batch/input/mock_data.txt
+wget -O ~/docker_batch/input/mock_data.txt \
+  https://raw.githubusercontent.com/SeonDH/bio_linux/master/docs/day5/chapter22/data/mock_data.txt
 cd ~/docker_batch
 ```
 
