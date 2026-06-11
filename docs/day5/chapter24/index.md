@@ -112,6 +112,9 @@ sudo chown -R slurm:slurm /var/log/slurm
 
 ## SLURM 설정 예시 (`/etc/slurm/slurm.conf`)
 
+`slurm.conf`는 SLURM이 어떤 노드를 컨트롤 노드로 쓸지, 어떤 노드를 워커 노드로 쓸지, 어떤 파티션을 만들지 정의하는 설정 파일이다.
+패키지 설치 후 이 파일이 자동으로 만들어져 있지 않을 수 있으므로, 없으면 직접 생성한다.
+
 먼저 현재 서버의 호스트 이름과 CPU 개수를 확인한다.
 
 ```bash
@@ -119,7 +122,15 @@ hostname -s
 nproc
 ```
 
-아래 설정에서 `{호스트이름}`은 `hostname -s` 결과로, `CPUs=2`는 `nproc` 결과에 맞게 수정한다.
+설정 파일을 새로 만든다.
+
+```bash
+sudo mkdir -p /etc/slurm
+sudo vi /etc/slurm/slurm.conf
+```
+
+아래 내용을 입력한다.
+`{호스트이름}`은 `hostname -s` 결과로, `CPUs=2`는 `nproc` 결과에 맞게 수정한다.
 
 ```conf
 ClusterName=single-cluster
