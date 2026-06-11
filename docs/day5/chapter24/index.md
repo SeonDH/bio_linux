@@ -265,6 +265,21 @@ sbatch myjob.sh
 cat output.txt
 ```
 
+스크립트 안에 `#SBATCH` 지시어를 넣지 않고, 제출할 때 옵션으로 같은 값을 줄 수도 있다.
+
+```bash
+sbatch \
+  --job-name=test_job \
+  --output=output.txt \
+  --ntasks=1 \
+  --cpus-per-task=2 \
+  --mem=512M \
+  --time=00:05:00 \
+  --partition=debug \
+  myjob.sh
+```
+
+이 방식은 스크립트를 재사용하면서 실행 조건만 바꾸고 싶을 때 유용하다.
 
 ## SLURM 자원 요청 옵션 요약
 
