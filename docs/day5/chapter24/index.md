@@ -139,6 +139,7 @@ SLURM은 이 이름으로 노드 사이에 통신하므로, 해당 이름이 DNS
 ```conf
 ClusterName=single-cluster
 SlurmctldHost={호스트이름}
+SlurmUser=slurm
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
@@ -153,6 +154,7 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE
 | --- | --- |
 | `ClusterName=single-cluster` | 클러스터 이름이다. 실습에서는 임의의 이름을 사용해도 된다. |
 | `SlurmctldHost={호스트이름}` | `slurmctld`가 실행되는 컨트롤 노드의 호스트 이름이다. |
+| `SlurmUser=slurm` | `slurmctld` 데몬을 실행할 시스템 사용자다. Ubuntu 패키지의 systemd 서비스가 `slurm` 사용자로 실행되는 경우 설정 파일에도 맞춰 적어야 한다. |
 | `AccountingStorageType=accounting_storage/none` | 작업 사용량 회계 데이터베이스를 사용하지 않겠다는 뜻이다. 단일 노드 실습에서는 생략된 회계 기능으로 이해하면 된다. |
 | `JobAcctGatherType=jobacct_gather/none` | 작업별 세부 자원 사용량 수집을 하지 않겠다는 뜻이다. 실습 구성을 단순하게 만들기 위한 설정이다. |
 | `NodeName={호스트이름} CPUs=2` | SLURM이 관리할 워커 노드를 정의한다. `CPUs=2`는 이 노드가 제공하는 CPU 개수다. 노드 상태는 기본값인 `UNKNOWN`으로 시작한다. |
@@ -167,6 +169,7 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE
 ```conf
 ClusterName=bio-cluster
 SlurmctldHost=master
+SlurmUser=slurm
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
