@@ -106,8 +106,11 @@ Docker는 `Dockerfile`을 바로 실행하는 것이 아니라, 먼저 이미지
 ```bash
 cd ~/myapp
 docker build -t myapp:latest .
-docker run -d -p 5000:5000 myapp:latest
+docker run --rm myapp:latest
 ```
+
+`-p` 옵션을 사용한 포트 매핑은 웹 서버처럼 외부에서 접속해야 하는 서비스형 컨테이너에 필요하다.
+바이오 분석처럼 실행 후 결과 파일을 남기고 종료되는 배치 작업에서는 보통 포트 매핑이 필요 없다.
 
 이 장에서는 로컬 Linux의 Docker Engine 기준으로 실습한다.
 
@@ -155,7 +158,10 @@ docker stats
 
 - [[번외] 프로세스와 도커 컨테이너](extra/process.md)
 
-## [실습] 도커 이미지 만들기 (로컬 Linux에서 실행)
+## Dockerfile 예시 흐름
+
+아래 예시는 강의 중 Dockerfile이 이미지로 빌드되고 컨테이너로 실행되는 흐름을 설명하기 위한 간단한 예시이다.
+정식 실습은 뒤의 Docker 배치 파이프라인에서 진행한다.
 
 - 도커가 없을 경우, 사전 과제의 설치 안내를 먼저 따라간다.
 
