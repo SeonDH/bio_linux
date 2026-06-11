@@ -11,62 +11,42 @@ layout: default
 - 애플리케이션과 그 종속성을 **컨테이너**라는 경량 가상 환경에 패키징해 어디서나 일관되게 실행할 수 있도록 돕는 플랫폼  
 - 개발·테스트·배포·운영 환경 간 차이를 최소화해 “로컬에서 잘 되던 코드가 서버에서 안 돼요” 문제를 방지  
 
-## 사전 과제: 개인 로컬 PC에 Docker 설치
+## 사전 과제: 로컬 Linux에 Docker 설치
 
-Day 5 Docker 실습은 개인 로컬 PC에서 진행하므로, 교육 전에 Docker를 설치하고 아래 명령어가 동작하는지 확인한다.
-
-```bash
-docker --version
-docker run --rm hello-world
-```
-
-아래 실습 예시는 `docker` 명령을 기준으로 작성했다. 환경에 따라 Docker Desktop 또는 Docker Engine을 사용하면 된다.
-
-환경별 설치 방법은 다음 중 하나를 선택한다.
-
-| 환경 | 권장 설치 방법 |
-| --- | --- |
-| Windows | Docker Desktop 설치 ([공식 문서](https://docs.docker.com/desktop/setup/install/windows-install/)) 및 MobaXterm 터미널 사용 |
-| macOS | Docker Desktop 설치 ([공식 문서](https://docs.docker.com/desktop/setup/install/mac-install/)) |
-| Ubuntu | Docker Engine 설치 ([공식 문서](https://docs.docker.com/engine/install/ubuntu/)) |
-
-> 라이선스 주의: Docker Desktop은 개인 사용, 교육, 소규모 조직 등에는 무료로 사용할 수 있지만, Docker가 정한 규모를 넘는 기업의 상업적 사용에는 유료 구독이 필요할 수 있다. 회사 장비에서 설치하는 경우에는 기관의 소프트웨어 사용 정책과 [Docker Desktop 라이선스](https://docs.docker.com/subscription/desktop-license/)를 확인한다.
-
-### macOS
-
-1. Docker Desktop for Mac을 설치한다.
-2. 설치 후 Docker Desktop을 실행한다.
-3. 상단 메뉴바에 Docker 아이콘이 표시되고 실행 상태가 될 때까지 기다린다.
-4. 터미널에서 아래 명령어를 실행한다.
+Day 5 Docker 실습은 로컬 Linux 환경에서 Dockerfile을 만들고, 이미지를 빌드한 뒤 컨테이너로 실행하는 흐름을 기준으로 진행한다.
+교육 전에 로컬 Linux에 Docker를 설치하고 아래 명령어가 동작하는지 확인한다.
 
 ```bash
 docker --version
 docker run --rm hello-world
 ```
 
-Apple Silicon(M1/M2/M3) Mac과 Intel Mac은 설치 파일이 다를 수 있으므로 본인 장비에 맞는 버전을 선택한다.
+Ubuntu 계열 로컬 Linux 기준 설치 예시는 다음과 같다.
 
-### Windows
-
-1. Docker Desktop for Windows를 설치한다.
-2. 설치 과정에서 WSL 2 사용 안내가 나오면 안내에 따라 WSL 2를 활성화한다.
-3. 설치 후 Docker Desktop을 실행한다.
-4. MobaXterm을 설치하고, 로컬 터미널에서 아래 명령어를 실행한다.
-
-```powershell
+```bash
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable --now docker
 docker --version
+```
+
+일반 사용자 계정에서 `sudo` 없이 `docker` 명령어를 쓰려면 현재 사용자를 `docker` 그룹에 추가한다.
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+그룹 권한은 다시 로그인한 뒤 적용된다.
+바로 확인하고 싶다면 아래처럼 실행한다.
+
+```bash
+newgrp docker
 docker run --rm hello-world
 ```
 
-Windows에서는 Docker Desktop이 실행 중이어야 `docker` 명령어가 정상 동작한다.
+macOS와 Windows에서 Docker Desktop으로 Dockerfile을 사용하는 방법은 번외에서 다룬다.
 
-### 대체 선택지
-
-Docker Desktop 사용이 부담되는 환경에서는 Linux 서버 기준으로 Docker Engine을 사용할 수 있다. 다만 교육 실습은 Docker Desktop 기준으로 진행한다.
-
-| 환경 | 대체 선택지 | 비고 |
-| --- | --- | --- |
-| Ubuntu/Linux | Docker Engine | 서버 환경에서 가장 직접적인 설치 방식 |
+- [[번외] macOS와 Windows에서 Dockerfile 사용하기](extra/desktop.md)
 
 ## Docker의 주요 구성 요소
 
@@ -132,7 +112,7 @@ docker build -t myapp:latest .
 docker run -d -p 5000:5000 myapp:latest
 ```
 
-Docker Desktop과 Docker Engine처럼 환경이 달라도 기본 흐름은 같다.
+이 장에서는 로컬 Linux의 Docker Engine 기준으로 실습한다.
 
 ## 프로세스 vs 도커 컨테이너
 
@@ -178,7 +158,7 @@ docker stats
 
 - [[번외] 프로세스와 도커 컨테이너](extra/process.md)
 
-## [실습] 도커 이미지 만들기 (로컬 PC에서 실행)
+## [실습] 도커 이미지 만들기 (로컬 Linux에서 실행)
 
 - 도커가 없을 경우, 사전 과제의 설치 안내를 먼저 따라간다.
 
@@ -272,17 +252,18 @@ CMD ["./echo_docker.sh"]
 
 실제 바이오 분석 환경에서는 이 구조를 직접 `docker run`으로 실행하기도 하지만, 기관이나 서버 환경에 따라 Nextflow, Snakemake 같은 워크플로 도구나 Apptainer/Singularity 같은 HPC 친화적인 컨테이너 도구를 통해 실행하기도 한다.
 
-## 로컬에서 만든 Docker 작업을 서버에서 실행하기
+## 로컬 Linux에서 만든 Docker 작업을 서버에서 실행하기
 
-이번 실습에서는 개인 로컬 PC에서 `Dockerfile`, 실행 스크립트, 설정 파일을 먼저 작성한 뒤, `scp`로 분석 서버에 전송하고 서버에서 이미지를 빌드해 실행하는 흐름을 연습한다.
+이번 실습에서는 로컬 Linux에서 `Dockerfile`, 실행 스크립트, 설정 파일을 먼저 작성한 뒤, `scp`로 분석 서버에 전송하고 서버에서 이미지를 빌드해 실행하는 흐름을 연습한다.
 
 실제 현장에서는 기관 환경에 따라 방식이 다를 수 있다. Docker Hub, GitHub Container Registry 같은 이미지 저장소를 사용하거나, Nextflow/Snakemake 같은 워크플로 도구가 컨테이너 실행을 대신 관리하기도 한다. HPC 환경에서는 Docker 대신 Apptainer/Singularity를 사용하는 경우도 많다.
 
 여기서는 복잡한 배포 체계 대신, 분석 코드와 Docker 설정을 서버로 옮기고 서버에 있는 데이터 디렉터리를 마운트해 실행하는 기본 구조만 다룬다.
+서버에서 이미지를 빌드하고 실행하려면 서버에도 Docker가 설치되어 있고, 현재 계정이 `docker` 명령어를 실행할 수 있어야 한다.
 
-### 1. 로컬 작업 디렉터리 정리
+### 1. 로컬 Linux 작업 디렉터리 정리
 
-로컬 PC에서 다음 파일이 준비되어 있다고 가정한다.
+로컬 Linux에서 다음 파일이 준비되어 있다고 가정한다.
 
 ```text
 docker_batch/
@@ -296,7 +277,7 @@ docker_batch/
 
 ### 2. scp로 서버에 전송
 
-로컬 PC에서 실행한다.
+로컬 Linux에서 실행한다.
 
 ```bash
 scp -r ~/docker_batch username@server_address:~/docker_batch

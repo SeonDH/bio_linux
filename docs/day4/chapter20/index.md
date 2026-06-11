@@ -57,7 +57,7 @@ DROP DATABASE database_name;   --데이터베이스 삭제
 ## [따라하기] 데이터베이스 생성
 
 ```sql
-CREATE DATABASE library;
+CREATE DATABASE book_db;
 ```
 
 ## 테이블 생성, 수정 및 삭제
@@ -84,7 +84,7 @@ DROP TABLE table_name;
 
 ```sql
 -- 데이터베이스 사용
-USE library;
+USE book_db;
 
 -- authors 테이블 생성
 CREATE TABLE authors (

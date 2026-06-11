@@ -60,9 +60,39 @@ VALUES (123, '홍길동', 38, '설명입니다.');
 SELECT * FROM student;
 ```
 
-## 4. Docker 확인
+## 4. Docker 설치 및 확인
+
+Ubuntu 계열 로컬 Linux 기준 예시이다.
+
+```bash
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable --now docker
+docker --version
+```
+
+일반 사용자 계정에서 `sudo` 없이 `docker` 명령어를 쓰고 싶다면 현재 사용자를 `docker` 그룹에 추가한다.
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+위 명령어를 실행한 뒤에는 터미널을 완전히 종료하고 다시 로그인해야 그룹 권한이 적용된다.
+바로 확인하고 싶다면 아래처럼 `newgrp`를 사용할 수 있다.
+
+```bash
+newgrp docker
+```
+
+Docker 실행 확인:
 
 ```bash
 docker --version
 docker run --rm hello-world
+```
+
+만약 권한 오류가 나면 먼저 아래처럼 `sudo`를 붙여 확인할 수 있다.
+
+```bash
+sudo docker run --rm hello-world
 ```
