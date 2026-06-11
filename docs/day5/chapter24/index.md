@@ -92,9 +92,17 @@ sudo systemctl enable --now munge
 
 ## SLURM 디렉터리 준비
 
+SLURM 데몬은 작업 상태, 노드 상태, 로그 파일을 시스템 디렉터리에 기록한다.
+Ubuntu 패키지 설치 후 `slurmctld`와 `slurmd`는 보통 `slurm` 사용자 권한으로 실행되므로, 해당 디렉터리를 `slurm:slurm` 소유로 맞춰 데몬이 파일을 생성하고 수정할 수 있게 한다.
+
 ```bash
+# 워커 노드에서 slurmd가 사용하는 작업 상태 디렉터리
 sudo mkdir -p /var/spool/slurmd
+
+# 컨트롤 노드에서 slurmctld가 사용하는 클러스터 상태 디렉터리
 sudo mkdir -p /var/spool/slurmctld
+
+# SLURM 로그 디렉터리
 sudo mkdir -p /var/log/slurm
 
 sudo chown -R slurm:slurm /var/spool/slurmd
