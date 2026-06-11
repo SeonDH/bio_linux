@@ -131,12 +131,14 @@ sudo vi /etc/slurm/slurm.conf
 
 아래 내용을 입력한다.
 `{호스트이름}`은 `hostname -s` 결과로 바꾼다.
+호스트 이름은 IP 주소 자체가 아니라 서버를 부르는 이름이다.
+SLURM은 이 이름으로 노드 사이에 통신하므로, 해당 이름이 DNS나 `/etc/hosts`를 통해 IP 주소로 해석되어야 한다.
 `CPUs=2`는 이 노드가 SLURM에 제공할 CPU 개수이며, 보통 `nproc` 결과에 맞춘다.
 실습용으로 일부 CPU만 SLURM에 제공하고 싶다면 더 작은 값으로 적어도 된다.
 
 ```conf
 ClusterName=single-cluster
-ControlMachine={호스트이름}
+SlurmctldHost={호스트이름}
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
@@ -150,7 +152,7 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE State=U
 | 항목 | 의미 |
 | --- | --- |
 | `ClusterName=single-cluster` | 클러스터 이름이다. 실습에서는 임의의 이름을 사용해도 된다. |
-| `ControlMachine={호스트이름}` | `slurmctld`가 실행되는 컨트롤 노드의 호스트 이름이다. |
+| `SlurmctldHost={호스트이름}` | `slurmctld`가 실행되는 컨트롤 노드의 호스트 이름이다. |
 | `AccountingStorageType=accounting_storage/none` | 작업 사용량 회계 데이터베이스를 사용하지 않겠다는 뜻이다. 단일 노드 실습에서는 생략된 회계 기능으로 이해하면 된다. |
 | `JobAcctGatherType=jobacct_gather/none` | 작업별 세부 자원 사용량 수집을 하지 않겠다는 뜻이다. 실습 구성을 단순하게 만들기 위한 설정이다. |
 | `NodeName={호스트이름} CPUs=2 State=UNKNOWN` | SLURM이 관리할 워커 노드를 정의한다. `CPUs=2`는 이 노드가 제공하는 CPU 개수다. |
@@ -164,7 +166,7 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE State=U
 
 ```conf
 ClusterName=bio-cluster
-ControlMachine=master
+SlurmctldHost=master
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
@@ -177,6 +179,7 @@ PartitionName=debug Nodes=worker1,worker2 Default=YES MaxTime=INFINITE State=UP
 이 경우 `slurmctld`는 `master`에서 실행하고, `slurmd`는 `worker1`, `worker2`에서 실행한다.
 동일한 `slurm.conf`를 컨트롤 노드와 모든 워커 노드의 `/etc/slurm/slurm.conf`에 배포해야 한다.
 또한 모든 노드가 서로의 호스트 이름을 해석할 수 있어야 하므로 DNS나 `/etc/hosts` 설정이 맞아야 한다.
+호스트 이름과 실제 통신에 사용할 주소를 분리해야 한다면 `NodeName=worker1 NodeAddr=192.168.0.11 CPUs=8 State=UNKNOWN`처럼 `NodeAddr`를 함께 지정할 수 있다.
 
 ## SLURM 데몬 실행
 
