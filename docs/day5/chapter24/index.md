@@ -115,11 +115,12 @@ sudo chown -R slurm:slurm /var/log/slurm
 `slurm.conf`는 SLURM이 어떤 노드를 컨트롤 노드로 쓸지, 어떤 노드를 워커 노드로 쓸지, 어떤 파티션을 만들지 정의하는 설정 파일이다.
 패키지 설치 후 이 파일이 자동으로 만들어져 있지 않을 수 있으므로, 없으면 직접 생성한다.
 
-먼저 현재 서버의 호스트 이름과 CPU 개수를 확인한다.
+먼저 현재 서버의 호스트 이름, CPU 개수, 메모리 용량을 확인한다.
 
 ```bash
 hostname -s
 nproc
+free -m
 ```
 
 설정 파일을 새로 만든다.
@@ -135,16 +136,19 @@ sudo vi /etc/slurm/slurm.conf
 SLURM은 이 이름으로 노드 사이에 통신하므로, 해당 이름이 DNS나 `/etc/hosts`를 통해 IP 주소로 해석되어야 한다.
 `CPUs=2`는 이 노드가 SLURM에 제공할 CPU 개수이며, 보통 `nproc` 결과에 맞춘다.
 실습용으로 일부 CPU만 SLURM에 제공하고 싶다면 더 작은 값으로 적어도 된다.
+`RealMemory=3000`은 이 노드가 SLURM에 제공할 메모리 용량(MB)이며, `free -m` 결과를 보고 실제 메모리보다 약간 작게 잡는다.
 
 ```conf
 ClusterName=single-cluster
 SlurmctldHost={호스트이름}
 SlurmUser=slurm
+StateSaveLocation=/var/spool/slurmctld
+SlurmdSpoolDir=/var/spool/slurmd
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
 
-NodeName={호스트이름} CPUs=2
+NodeName={호스트이름} CPUs=2 RealMemory=3000
 PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE
 ```
 
@@ -155,9 +159,11 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE
 | `ClusterName=single-cluster` | 클러스터 이름이다. 실습에서는 임의의 이름을 사용해도 된다. |
 | `SlurmctldHost={호스트이름}` | `slurmctld`가 실행되는 컨트롤 노드의 호스트 이름이다. |
 | `SlurmUser=slurm` | `slurmctld` 데몬을 실행할 시스템 사용자다. Ubuntu 패키지의 systemd 서비스가 `slurm` 사용자로 실행되는 경우 설정 파일에도 맞춰 적어야 한다. |
+| `StateSaveLocation=/var/spool/slurmctld` | `slurmctld`가 클러스터와 작업 상태를 저장할 위치다. 이 값을 지정하지 않으면 배포판에 따라 `/var/spool` 같은 상위 디렉터리를 사용하려다 권한 오류가 날 수 있다. |
+| `SlurmdSpoolDir=/var/spool/slurmd` | `slurmd`가 워커 노드의 작업 상태를 저장할 위치다. |
 | `AccountingStorageType=accounting_storage/none` | 작업 사용량 회계 데이터베이스를 사용하지 않겠다는 뜻이다. 단일 노드 실습에서는 생략된 회계 기능으로 이해하면 된다. |
 | `JobAcctGatherType=jobacct_gather/none` | 작업별 세부 자원 사용량 수집을 하지 않겠다는 뜻이다. 실습 구성을 단순하게 만들기 위한 설정이다. |
-| `NodeName={호스트이름} CPUs=2` | SLURM이 관리할 워커 노드를 정의한다. `CPUs=2`는 이 노드가 제공하는 CPU 개수다. 노드 상태는 기본값인 `UNKNOWN`으로 시작한다. |
+| `NodeName={호스트이름} CPUs=2 RealMemory=3000` | SLURM이 관리할 워커 노드를 정의한다. `CPUs`는 제공할 CPU 개수이고, `RealMemory`는 제공할 메모리 용량(MB)이다. 노드 상태는 기본값인 `UNKNOWN`으로 시작한다. |
 | `PartitionName=debug Nodes={호스트이름} ...` | `debug`라는 파티션을 만들고, 그 파티션에 포함될 노드를 지정한다. 파티션 상태는 기본값인 `UP`으로 시작하며, 사용자는 작업 제출 시 `--partition=debug`로 이 파티션을 사용할 수 있다. |
 
 `/etc/slurm/slurm.conf`는 컨트롤 노드와 워커 노드가 모두 읽는 클러스터 설정 파일이다.
@@ -170,19 +176,21 @@ PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE
 ClusterName=bio-cluster
 SlurmctldHost=master
 SlurmUser=slurm
+StateSaveLocation=/var/spool/slurmctld
+SlurmdSpoolDir=/var/spool/slurmd
 
 AccountingStorageType=accounting_storage/none
 JobAcctGatherType=jobacct_gather/none
 
-NodeName=worker1 CPUs=8
-NodeName=worker2 CPUs=8
+NodeName=worker1 CPUs=8 RealMemory=16000
+NodeName=worker2 CPUs=8 RealMemory=16000
 PartitionName=debug Nodes=worker1,worker2 Default=YES MaxTime=INFINITE
 ```
 
 이 경우 `slurmctld`는 `master`에서 실행하고, `slurmd`는 `worker1`, `worker2`에서 실행한다.
 동일한 `slurm.conf`를 컨트롤 노드와 모든 워커 노드의 `/etc/slurm/slurm.conf`에 배포해야 한다.
 또한 모든 노드가 서로의 호스트 이름을 해석할 수 있어야 하므로 DNS나 `/etc/hosts` 설정이 맞아야 한다.
-호스트 이름과 실제 통신에 사용할 주소를 분리해야 한다면 `NodeName=worker1 NodeAddr=192.168.0.11 CPUs=8`처럼 `NodeAddr`를 함께 지정할 수 있다.
+호스트 이름과 실제 통신에 사용할 주소를 분리해야 한다면 `NodeName=worker1 NodeAddr=192.168.0.11 CPUs=8 RealMemory=16000`처럼 `NodeAddr`를 함께 지정할 수 있다.
 
 ## SLURM 데몬 실행
 
@@ -196,6 +204,28 @@ sudo systemctl enable --now slurmd
 
 `slurmctld`는 작업을 어느 노드에서 실행할지 결정하는 스케줄러 역할을 하고, `slurmd`는 각 워커 노드에서 실제 작업 실행을 담당한다.
 단일 노드 실습에서는 두 데몬을 같은 서버에서 실행하지만, 실제 클러스터에서는 보통 컨트롤 노드와 여러 워커 노드로 역할이 나뉜다.
+
+정상 실행 여부를 확인한다.
+
+```bash
+systemctl status slurmctld --no-pager
+systemctl status slurmd --no-pager
+sinfo
+```
+
+`slurmctld`가 시작되지 않으면 최근 로그를 확인한다.
+
+```bash
+journalctl -u slurmctld.service --since "5 minutes ago" --no-pager -l
+```
+
+자주 만나는 오류는 다음과 같다.
+
+| 오류 메시지 | 원인과 확인할 부분 |
+| --- | --- |
+| `ConditionPathExists=/etc/slurm/slurm.conf` | `/etc/slurm/slurm.conf` 파일이 아직 없다. 설정 파일을 직접 생성해야 한다. |
+| `Running user ID does not match the SlurmUser` | systemd 서비스의 `User=`와 `slurm.conf`의 `SlurmUser=`가 다르다. Ubuntu 패키지에서는 보통 `SlurmUser=slurm`으로 맞춘다. |
+| `Incorrect permissions on state save loc: /var/spool` | `StateSaveLocation`이 명시되지 않아 `/var/spool`을 상태 저장 위치로 쓰려는 경우다. `StateSaveLocation=/var/spool/slurmctld`를 설정하고 해당 디렉터리를 `slurm:slurm` 소유로 둔다. |
 
 ## SLURM 기본 명령어
 
@@ -219,7 +249,7 @@ sudo systemctl enable --now slurmd
 #SBATCH --output=output.txt
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=4G
+#SBATCH --mem=512M
 #SBATCH --time=00:05:00
 #SBATCH --partition=debug
 
@@ -244,7 +274,7 @@ cat output.txt
 | `--output=파일명`       | 표준 출력 파일 지정     | `--output=result.txt` |
 | `--ntasks=숫자`        | 실행할 태스크 개수      | `--ntasks=4`          |
 | `--cpus-per-task=숫자` | 태스크당 할당할 CPU 개수 | `--cpus-per-task=2`   |
-| `--mem=용량`           | 작업 전체에 할당할 메모리 | `--mem=8G`            |
+| `--mem=용량`           | 작업 전체에 할당할 메모리 | `--mem=512M`          |
 | `--mem-per-cpu=용량`   | CPU 1개당 할당할 메모리 | `--mem-per-cpu=2G`    |
 | `--time=HH:MM:SS`    | 최대 실행 시간        | `--time=01:00:00`     |
 | `--partition=이름`     | 사용할 파티션 이름      | `--partition=short`   |
