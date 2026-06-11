@@ -130,7 +130,9 @@ sudo vi /etc/slurm/slurm.conf
 ```
 
 아래 내용을 입력한다.
-`{호스트이름}`은 `hostname -s` 결과로, `CPUs=2`는 `nproc` 결과에 맞게 수정한다.
+`{호스트이름}`은 `hostname -s` 결과로 바꾼다.
+`CPUs=2`는 이 노드가 SLURM에 제공할 CPU 개수이며, 보통 `nproc` 결과에 맞춘다.
+실습용으로 일부 CPU만 SLURM에 제공하고 싶다면 더 작은 값으로 적어도 된다.
 
 ```conf
 ClusterName=single-cluster
@@ -143,6 +145,38 @@ NodeName={호스트이름} CPUs=2 State=UNKNOWN
 PartitionName=debug Nodes={호스트이름} Default=YES MaxTime=INFINITE State=UP
 ```
 
+각 항목의 의미는 다음과 같다.
+
+| 항목 | 의미 |
+| --- | --- |
+| `ClusterName=single-cluster` | 클러스터 이름이다. 실습에서는 임의의 이름을 사용해도 된다. |
+| `ControlMachine={호스트이름}` | `slurmctld`가 실행되는 컨트롤 노드의 호스트 이름이다. |
+| `AccountingStorageType=accounting_storage/none` | 작업 사용량 회계 데이터베이스를 사용하지 않겠다는 뜻이다. 단일 노드 실습에서는 생략된 회계 기능으로 이해하면 된다. |
+| `JobAcctGatherType=jobacct_gather/none` | 작업별 세부 자원 사용량 수집을 하지 않겠다는 뜻이다. 실습 구성을 단순하게 만들기 위한 설정이다. |
+| `NodeName={호스트이름} CPUs=2 State=UNKNOWN` | SLURM이 관리할 워커 노드를 정의한다. `CPUs=2`는 이 노드가 제공하는 CPU 개수다. |
+| `PartitionName=debug Nodes={호스트이름} ...` | `debug`라는 파티션을 만들고, 그 파티션에 포함될 노드를 지정한다. 사용자는 작업 제출 시 `--partition=debug`로 이 파티션을 사용할 수 있다. |
+
+`/etc/slurm/slurm.conf`는 컨트롤 노드와 워커 노드가 모두 읽는 클러스터 설정 파일이다.
+단일 노드 실습에서는 같은 서버가 컨트롤 노드이면서 워커 노드이므로 하나의 호스트 이름만 사용한다.
+
+컨트롤 노드와 워커 노드가 다른 실제 클러스터에서는 컨트롤 노드 이름과 워커 노드 이름을 분리해서 적는다.
+예를 들어 컨트롤 노드가 `master`, 워커 노드가 `worker1`, `worker2`라면 다음과 같이 설정할 수 있다.
+
+```conf
+ClusterName=bio-cluster
+ControlMachine=master
+
+AccountingStorageType=accounting_storage/none
+JobAcctGatherType=jobacct_gather/none
+
+NodeName=worker1 CPUs=8 State=UNKNOWN
+NodeName=worker2 CPUs=8 State=UNKNOWN
+PartitionName=debug Nodes=worker1,worker2 Default=YES MaxTime=INFINITE State=UP
+```
+
+이 경우 `slurmctld`는 `master`에서 실행하고, `slurmd`는 `worker1`, `worker2`에서 실행한다.
+동일한 `slurm.conf`를 컨트롤 노드와 모든 워커 노드의 `/etc/slurm/slurm.conf`에 배포해야 한다.
+또한 모든 노드가 서로의 호스트 이름을 해석할 수 있어야 하므로 DNS나 `/etc/hosts` 설정이 맞아야 한다.
 
 ## SLURM 데몬 실행
 
