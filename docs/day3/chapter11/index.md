@@ -65,6 +65,24 @@ ls -l
 * `owner`: 파일의 소유자
 * `group`: 파일이 속한 그룹
 
+### 소유권 변경 - `chown`
+
+파일의 소유자나 그룹은 `chown` 명령어로 변경할 수 있다.
+소유권 변경은 시스템 파일이나 다른 사용자의 파일에 영향을 줄 수 있으므로 보통 `sudo` 권한이 필요하다.
+
+| 명령어 | 설명 |
+| --- | --- |
+| `sudo chown 사용자 파일` | 파일의 소유자를 변경한다. |
+| `sudo chown :그룹 파일` | 파일의 그룹만 변경한다. |
+| `sudo chown 사용자:그룹 파일` | 파일의 소유자와 그룹을 함께 변경한다. |
+| `sudo chown -R 사용자:그룹 디렉터리` | 디렉터리와 그 안의 파일 소유권을 재귀적으로 변경한다. |
+
+```bash
+sudo chown seon example.txt
+sudo chown seon:bio example.txt
+```
+
+`-R` 옵션은 하위 파일과 디렉터리까지 모두 바꾸므로, 실제 서버에서는 변경 범위를 먼저 확인한 뒤 사용해야 한다.
 
 ## 파일 권한 변경 - `chmod`
 
@@ -101,7 +119,7 @@ chmod 755 example.txt
 
 [[실습] 파일 권한 변경 - 5분](training/chmod.md)
 
-## [[번외] 사용자 그룹과 사용자 변경](extra/group.md)
+## [[번외] 사용자 그룹과 chown](extra/group.md)
 
 ## sudo 권한
 
